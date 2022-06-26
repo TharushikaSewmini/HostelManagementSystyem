@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="990.0" prefWidth="1573.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostelmanagementsystem.controller.DashBoardFormController">
+   <children>
+      <AnchorPane layoutX="255.0" prefHeight="55.0" prefWidth="1318.0" style="-fx-background-color: #bdc3c7;">
+         <children>
+            <Label fx:id="lblDate" layoutX="36.0" layoutY="16.0" text="2022-10-12" textFill="#2c3e50">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTime" layoutX="217.0" layoutY="16.0" text="10: 20: 35" textFill="#2c3e50">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <ImageView id="imgHome" fitHeight="45.0" fitWidth="49.0" layoutX="1124.0" layoutY="4.0" onMouseClicked="#backToHome" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assests/images/icons8-exterior-96.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView id="imgLogout" fitHeight="45.0" fitWidth="45.0" layoutX="1224.0" layoutY="4.0" onMouseClicked="#logout" pickOnBounds="true">
+               <image>
+                  <Image url="@assests/images/icons8-enter-100.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="866.0" prefWidth="255.0" style="-fx-background-color: #16a085;">
+         <children>
+            <JFXButton alignment="BASELINE_LEFT" layoutX="-2.0" layoutY="195.0" onAction="#homeOnAction" prefHeight="74.0" prefWidth="255.0" text="       Home" textAlignment="JUSTIFY" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" layoutX="-2.0" layoutY="269.0" onAction="#roomOnAction" prefHeight="74.0" prefWidth="255.0" text="       Rooms" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" layoutX="-2.0" layoutY="343.0" onAction="#studentOnAction" prefHeight="74.0" prefWidth="255.0" text="       Students" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" layoutX="-2.0" layoutY="417.0" onAction="#employeeOnAction" prefHeight="74.0" prefWidth="255.0" text="       Employees" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" layoutX="-2.0" layoutY="491.0" onAction="#keyMoneyOnAction" prefHeight="74.0" prefWidth="255.0" text="       Remain Key Money" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="12.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../BakeryShop/src/assets/baseline_house_white_24dp1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="12.0" layoutY="291.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../../../../BakeryShop/src/assets/baseline_lunch_dining_white_24dp.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="12.0" layoutY="365.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../../../../BakeryShop/src/assets/baseline_person_white_24dp.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="12.0" layoutY="513.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../../../../BakeryShop/src/assets/baseline_local_shipping_white_24dp.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="12.0" layoutY="439.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../../../../BakeryShop/src/assets/baseline_people_white_24dp.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="mainContext" layoutX="255.0" layoutY="55.0" prefHeight="924.0" prefWidth="1318.0" />
+   </children>
+</AnchorPane>

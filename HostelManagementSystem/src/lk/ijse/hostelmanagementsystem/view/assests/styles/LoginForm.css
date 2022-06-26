@@ -1,0 +1,7 @@
+#mainPane{
+    -fx-background-color: #B8E0F2;
+}
+
+#subPane{
+    -fx-background-radius: 0px 20px 0px 20px ;
+}
