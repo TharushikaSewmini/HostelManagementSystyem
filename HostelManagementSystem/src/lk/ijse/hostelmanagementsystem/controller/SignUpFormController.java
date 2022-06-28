@@ -43,28 +43,24 @@ public class SignUpFormController {
         Pattern emailPattern = Pattern.compile("^[A-z]{3,30}@gmail.com$");
         Pattern userNamePattern = Pattern.compile("^[A-Z][A-z ]{3,15}$");
         Pattern passwordPattern = Pattern.compile("^.*[A-z].*[0-9].*[!@#$%^&*()_]$");
-        Pattern visiblePasswordPattern = Pattern.compile("^.*[A-z].*[0-9].*[!@#$%^&*()_]$");
+        //Pattern visiblePasswordPattern = Pattern.compile("^.*[A-z].*[0-9].*[!@#$%^&*()_]$");
 
         map.put(txtFullName, fullNamePattern);
         map.put(txtEmail, emailPattern);
         map.put(txtUserName, userNamePattern);
         map.put(pwdPassword, passwordPattern);
-        map.put(txtVisiblePassword, visiblePasswordPattern);
+        //map.put(txtVisiblePassword, visiblePasswordPattern);
     }
 
     public void textFields_Key_Released(KeyEvent keyEvent) {
         ValidationUtil.validate(map,btnSignUp);
-//        TextField = error
-//        boolean // validation ok
 
-        //if the enter key pressed
         if (keyEvent.getCode() == KeyCode.ENTER) {
             Object response =  ValidationUtil.validate(map,btnSignUp);
-            //if the response is a text field
-            //that means there is a error
+
             if (response instanceof TextField) {
                 TextField textField = (TextField) response;
-                textField.requestFocus();// if there is a error just focus it
+                textField.requestFocus();
 
             }
         }

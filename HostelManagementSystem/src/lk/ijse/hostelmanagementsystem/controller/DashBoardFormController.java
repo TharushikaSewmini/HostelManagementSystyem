@@ -8,10 +8,11 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.hostelmanagementsystem.util.Loader;
 
 import java.io.IOException;
 
-public class DashBoardFormController {
+public class DashBoardFormController implements Loader {
     public Label lblDate;
     public Label lblTime;
     public AnchorPane mainContext;
@@ -31,7 +32,8 @@ public class DashBoardFormController {
     public void homeOnAction(ActionEvent actionEvent) {
     }
 
-    public void roomOnAction(ActionEvent actionEvent) {
+    public void roomOnAction(ActionEvent actionEvent) throws IOException {
+        loadUi("RoomManagementForm");
     }
 
     public void studentOnAction(ActionEvent actionEvent) {

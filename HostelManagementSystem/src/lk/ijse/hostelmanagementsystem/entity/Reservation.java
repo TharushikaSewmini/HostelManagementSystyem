@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
 @NoArgsConstructor
@@ -13,12 +14,13 @@ import java.time.LocalDate;
 
 @Entity
 public class Reservation {
+    @Id
     private String resId;
     private LocalDate date;
 
-    private Student sId;
+    //private Student sId;
 
-    private Room roomTypeId;
+    //private Room roomTypeId;
 
     private String status;
 }

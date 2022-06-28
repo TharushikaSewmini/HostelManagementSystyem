@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 public class RoomDTO {
     private String roomTypeId;
     private String type;
-    private String keyMoney;
+    private double keyMoney;
     private int qty;
 }

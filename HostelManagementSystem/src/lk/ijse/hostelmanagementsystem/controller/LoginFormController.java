@@ -42,26 +42,22 @@ public class LoginFormController implements Loader {
         //Create a pattern and compile it to use
         Pattern userNamePattern = Pattern.compile("^[A-Z][A-z ]{3,15}$");
         Pattern passwordPattern = Pattern.compile("^.*[A-z].*[0-9].*[!@#$%^&*()_]$");
-        Pattern visiblePasswordPattern = Pattern.compile("^.*[A-z].*[0-9].*[!@#$%^&*()_]$");
+        //Pattern visiblePasswordPattern = Pattern.compile("^.*[A-z].*[0-9].*[!@#$%^&*()_]$");
 
         map.put(txtUserName, userNamePattern);
         map.put(pwdPassword, passwordPattern);
-        map.put(txtVisiblePassword, visiblePasswordPattern);
+        //map.put(txtVisiblePassword, visiblePasswordPattern);
     }
 
     public void textFields_Key_Released(KeyEvent keyEvent) {
         ValidationUtil.validate(map,btnLogin);
-//        TextField = error
-//        boolean // validation ok
 
-        //if the enter key pressed
         if (keyEvent.getCode() == KeyCode.ENTER) {
             Object response =  ValidationUtil.validate(map,btnLogin);
-            //if the response is a text field
-            //that means there is a error
+
             if (response instanceof TextField) {
                 TextField textField = (TextField) response;
-                textField.requestFocus();// if there is a error just focus it
+                textField.requestFocus();
 
             }
         }

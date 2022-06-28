@@ -1,4 +1,5 @@
 package lk.ijse.hostelmanagementsystem.bo;
 
-public interface RoomBO {
+public enum BOType {
+    ROOM
 }
