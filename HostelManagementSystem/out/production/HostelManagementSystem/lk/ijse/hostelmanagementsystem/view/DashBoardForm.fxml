@@ -94,6 +94,6 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="mainContext" layoutX="255.0" layoutY="55.0" prefHeight="924.0" prefWidth="1318.0" />
+      <AnchorPane fx:id="mainContext" layoutX="255.0" layoutY="55.0" prefHeight="939.0" prefWidth="1428.0" />
    </children>
 </AnchorPane>

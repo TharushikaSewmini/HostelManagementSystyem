@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 
 @NoArgsConstructor
@@ -18,9 +19,11 @@ public class Reservation {
     private String resId;
     private LocalDate date;
 
-    //private Student sId;
+    /*@ManyToOne
+    private Student sId;
 
-    //private Room roomTypeId;
+    @ManyToOne
+    private Room roomTypeId;*/
 
     private String status;
 }

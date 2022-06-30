@@ -13,11 +13,13 @@ public interface RoomBO extends SuperBO {
 
     public boolean delete(String id) throws Exception;
 
-    /*ArrayList<RoomDTO> get() throws SQLException, ClassNotFoundException;*/
+    ArrayList<RoomDTO> getAllRoomTypes() throws Exception;
 
 
     boolean roomExist(String id) throws SQLException, ClassNotFoundException;
 
 
     String generateNewRoomId() throws Exception;
+
+    RoomDTO searchRoomType(String type) throws Exception;
 }

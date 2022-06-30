@@ -1,9 +1,5 @@
 package lk.ijse.hostelmanagementsystem.dao;
 
-import lk.ijse.hostelmanagementsystem.entity.SuperEntity;
-
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public interface CrudDAO <T, ID> extends SuperDAO {
@@ -15,7 +11,9 @@ public interface CrudDAO <T, ID> extends SuperDAO {
 
     public T find(ID id) throws Exception;
 
-    public List<T> findAll() throws Exception;
+    public List<T> getAll() throws Exception;
 
     String generateNewID() throws Exception;
+
+    T search(ID id) throws Exception;
 }

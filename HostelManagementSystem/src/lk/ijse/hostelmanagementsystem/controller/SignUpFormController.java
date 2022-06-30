@@ -43,13 +43,11 @@ public class SignUpFormController {
         Pattern emailPattern = Pattern.compile("^[A-z]{3,30}@gmail.com$");
         Pattern userNamePattern = Pattern.compile("^[A-Z][A-z ]{3,15}$");
         Pattern passwordPattern = Pattern.compile("^.*[A-z].*[0-9].*[!@#$%^&*()_]$");
-        //Pattern visiblePasswordPattern = Pattern.compile("^.*[A-z].*[0-9].*[!@#$%^&*()_]$");
 
         map.put(txtFullName, fullNamePattern);
         map.put(txtEmail, emailPattern);
         map.put(txtUserName, userNamePattern);
         map.put(pwdPassword, passwordPattern);
-        //map.put(txtVisiblePassword, visiblePasswordPattern);
     }
 
     public void textFields_Key_Released(KeyEvent keyEvent) {

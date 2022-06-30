@@ -1,7 +1,7 @@
 package lk.ijse.hostelmanagementsystem.dao.custom.impl;
 
-import lk.ijse.hostelmanagementsystem.dao.custom.RoomDAO;
-import lk.ijse.hostelmanagementsystem.entity.Room;
+import lk.ijse.hostelmanagementsystem.dao.custom.StudentDAO;
+import lk.ijse.hostelmanagementsystem.entity.Student;
 import lk.ijse.hostelmanagementsystem.util.FactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -10,9 +10,9 @@ import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class RoomDAOImpl implements RoomDAO {
+public class StudentDAOImpl implements StudentDAO {
     @Override
-    public boolean add(Room entity) throws Exception {
+    public boolean add(Student entity) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
@@ -24,7 +24,7 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public boolean update(Room entity) throws Exception {
+    public boolean update(Student entity) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
@@ -45,7 +45,7 @@ public class RoomDAOImpl implements RoomDAO {
         Transaction transaction = session.beginTransaction();
 
         try {
-            session.delete(session.get(Room.class, id));
+            session.delete(session.get(Student.class, id));
             transaction.commit();
             session.close();
             return true;
@@ -56,60 +56,36 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public Room find(String s) throws Exception {
-        /*Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-
-        Room room = session.get(Room.class, s);
-
-        session.delete(room);
-
-        transaction.commit();
-        session.close();
-        return true;*/
-
+    public Student find(String s) throws Exception {
         return null;
     }
 
     @Override
-    public List<Room> getAll() throws Exception {
+    public List<Student> getAll() throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
         try {
 
-            Query query = session.createQuery("FROM Room");
-            List<Room> roomList = query.list();
+            Query query = session.createQuery("FROM Student");
+            List<Student> studentList = query.list();
 
             transaction.commit();
             session.close();
 
-            return roomList;
+            return studentList;
         } catch (Exception exception) {
             transaction.rollback();
         }
         return null;
     }
 
-    /*@Override
-    public boolean exist(String s) throws Exception {
-        Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-
-        Room room = session.get(Room.class, s);
-        //String id = (String) sqlQuery.uniqueResult();
-
-        transaction.commit();
-        session.close();
-        return true;
-    }*/
-
     @Override
     public String generateNewID() throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        NativeQuery sqlQuery = session.createSQLQuery("SELECT roomTypeId FROM Room ORDER BY roomTypeId DESC LIMIT 1");
+        NativeQuery sqlQuery = session.createSQLQuery("SELECT sId FROM Student ORDER BY sId DESC LIMIT 1");
         String id = (String) sqlQuery.uniqueResult();
 
         transaction.commit();
@@ -118,22 +94,21 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public Room search(String type) throws Exception {
+    public Student search(String id) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
         try {
 
-            Query query = session.createQuery("FROM Room WHERE type= : room_type");
-            query.setParameter("room_type", type);
-            Room roomType = (Room) query.uniqueResult();
+            Query query = session.createQuery("FROM Student WHERE sId= : student_Id");
+            query.setParameter("student_Id", id);
+            Student student1 = (Student) query.uniqueResult();
             transaction.commit();
             session.close();
-            return roomType;
+            return student1;
         } catch (Exception exception) {
             transaction.rollback();
         }
         return null;
-
     }
 }

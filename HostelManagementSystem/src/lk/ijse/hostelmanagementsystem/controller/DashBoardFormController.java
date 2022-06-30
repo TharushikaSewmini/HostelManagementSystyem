@@ -36,21 +36,18 @@ public class DashBoardFormController implements Loader {
         loadUi("RoomManagementForm");
     }
 
-    public void studentOnAction(ActionEvent actionEvent) {
+    public void studentOnAction(ActionEvent actionEvent) throws IOException {
+        loadUi("RegistrationForm");
     }
 
     public void employeeOnAction(ActionEvent actionEvent) {
     }
 
     public void keyMoneyOnAction(ActionEvent actionEvent) throws IOException {
-        //loadUi("");
+        loadUi("StudentManagementForm");
     }
 
     public void loadUi(String location) throws IOException {
-        /*Stage stage = (Stage) context1.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/lk/ijse/hostelmanagementsystem/view/"+location+".fxml"))));
-        stage.centerOnScreen();*/
-
         mainContext.getChildren().clear();
         Parent parent = FXMLLoader.load(getClass().getResource("/lk/ijse/hostelmanagementsystem/view/"+location+".fxml"));
         mainContext.getChildren().add(parent);

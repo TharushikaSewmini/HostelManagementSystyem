@@ -1,7 +1,7 @@
 package lk.ijse.hostelmanagementsystem.dao;
 
-
 import lk.ijse.hostelmanagementsystem.dao.custom.impl.RoomDAOImpl;
+import lk.ijse.hostelmanagementsystem.dao.custom.impl.StudentDAOImpl;
 
 public class DAOFactory {
     private static DAOFactory daoFactory;
@@ -16,6 +16,10 @@ public class DAOFactory {
         switch (daoType){
             case ROOM:
                 return (T) new RoomDAOImpl();
+
+            case STUDENT:
+                return (T) new StudentDAOImpl();
+
             default:
                 return null;
         }
