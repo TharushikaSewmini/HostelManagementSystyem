@@ -47,12 +47,12 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" layoutX="-2.0" layoutY="269.0" onAction="#roomManagementOnAction" prefHeight="74.0" prefWidth="285.0" text="       Room Management" textFill="WHITE">
+            <JFXButton alignment="BASELINE_LEFT" layoutX="-2.0" layoutY="343.0" onAction="#roomManagementOnAction" prefHeight="74.0" prefWidth="285.0" text="       Room Management" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" layoutX="-2.0" layoutY="343.0" onAction="#roomReservationOnAction" prefHeight="74.0" prefWidth="285.0" text="       Room Reservation" textFill="WHITE">
+            <JFXButton alignment="BASELINE_LEFT" layoutY="269.0" onAction="#roomReservationOnAction" prefHeight="74.0" prefWidth="285.0" text="       Reserve Room" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -72,12 +72,12 @@
                   <Image url="@../../../../../../../BakeryShop/src/assets/baseline_house_white_24dp1.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="12.0" layoutY="291.0" pickOnBounds="true">
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="12.0" layoutY="365.0" pickOnBounds="true">
                <image>
                   <Image url="@../../../../../../../BakeryShop/src/assets/baseline_lunch_dining_white_24dp.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="12.0" layoutY="365.0" pickOnBounds="true">
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="291.0" pickOnBounds="true">
                <image>
                   <Image url="@../../../../../../../BakeryShop/src/assets/baseline_person_white_24dp.png" />
                </image>
