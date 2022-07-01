@@ -1,5 +1,5 @@
 package lk.ijse.hostelmanagementsystem.bo;
 
 public enum BOType {
-    ROOM, STUDENT, REGISTRATION, USER
+    ROOM, STUDENT, REGISTRATION, USER, PAYMENT
 }

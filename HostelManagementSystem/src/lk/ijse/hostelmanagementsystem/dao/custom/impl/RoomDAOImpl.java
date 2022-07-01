@@ -91,19 +91,6 @@ public class RoomDAOImpl implements RoomDAO {
         return null;
     }
 
-    /*@Override
-    public boolean exist(String s) throws Exception {
-        Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-
-        Room room = session.get(Room.class, s);
-        //String id = (String) sqlQuery.uniqueResult();
-
-        transaction.commit();
-        session.close();
-        return true;
-    }*/
-
     @Override
     public String generateNewID() throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();

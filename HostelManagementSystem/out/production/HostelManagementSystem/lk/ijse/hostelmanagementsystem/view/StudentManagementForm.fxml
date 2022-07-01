@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="939.0" prefWidth="1428.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostelmanagementsystem.controller.StudentManagementFormController">
    <children>
       <Label layoutX="135.0" layoutY="37.0" text="Manage Students" textFill="#673a79">
@@ -21,7 +20,7 @@
          </font>
       </Label>
       <Separator layoutX="43.0" layoutY="93.0" prefHeight="3.0" prefWidth="1297.0" />
-      <TableView fx:id="tblStudent" layoutX="60.0" layoutY="123.0" prefHeight="366.0" prefWidth="1308.0">
+      <TableView fx:id="tblStudent" layoutX="60.0" layoutY="539.0" prefHeight="366.0" prefWidth="1308.0">
          <columns>
             <TableColumn fx:id="colStudentId" prefWidth="166.0" text="Student Id" />
             <TableColumn fx:id="colStudentName" prefWidth="301.0" text="Name" />
@@ -31,48 +30,48 @@
             <TableColumn fx:id="colGender" prefWidth="176.0" text="Gender" />
          </columns>
       </TableView>
-      <JFXButton fx:id="btnSaveStudent" buttonType="RAISED" layoutX="215.0" layoutY="822.0" onAction="#saveStudentOnAction" prefHeight="44.0" prefWidth="232.0" style="-fx-background-color: #16a085; -fx-background-radius: 6;" text="Save" textFill="WHITE">
+      <JFXButton fx:id="btnSaveStudent" buttonType="RAISED" layoutX="208.0" layoutY="426.0" onAction="#saveStudentOnAction" prefHeight="44.0" prefWidth="232.0" style="-fx-background-color: #16a085; -fx-background-radius: 6;" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btnAddNewStudent" buttonType="RAISED" layoutX="1195.0" layoutY="507.0" onAction="#addNewStudentOnAction" prefHeight="44.0" prefWidth="166.0" style="-fx-background-color: #9b59b6; -fx-background-radius: 6;" text="+New Student" textFill="WHITE">
+      <JFXButton fx:id="btnAddNewStudent" buttonType="RAISED" layoutX="1188.0" layoutY="111.0" onAction="#addNewStudentOnAction" prefHeight="44.0" prefWidth="166.0" style="-fx-background-color: #9b59b6; -fx-background-radius: 6;" text="+New Student" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btnDeleteStudent" buttonType="RAISED" layoutX="868.0" layoutY="822.0" onAction="#deleteStudentOnAction" prefHeight="44.0" prefWidth="217.0" style="-fx-background-color: #16a085; -fx-background-radius: 8;" text="Delete" textFill="WHITE">
+      <JFXButton fx:id="btnDeleteStudent" buttonType="RAISED" layoutX="861.0" layoutY="426.0" onAction="#deleteStudentOnAction" prefHeight="44.0" prefWidth="217.0" style="-fx-background-color: #34495e; -fx-background-radius: 8;" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </JFXButton>
-      <JFXTextField fx:id="txtSId" labelFloat="true" layoutX="81.0" layoutY="575.0" prefHeight="42.0" prefWidth="253.0" promptText="Student Id">
+      <JFXTextField fx:id="txtSId" labelFloat="true" layoutX="74.0" layoutY="179.0" prefHeight="42.0" prefWidth="253.0" promptText="Student Id">
          <font>
             <Font size="18.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtName" labelFloat="true" layoutX="488.0" layoutY="575.0" prefHeight="42.0" prefWidth="398.0" promptText="Name">
+      <JFXTextField fx:id="txtName" labelFloat="true" layoutX="481.0" layoutY="179.0" prefHeight="42.0" prefWidth="398.0" promptText="Name">
          <font>
             <Font size="18.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtAddress" labelFloat="true" layoutX="1021.0" layoutY="582.0" prefHeight="42.0" prefWidth="320.0" promptText="Address">
+      <JFXTextField fx:id="txtAddress" labelFloat="true" layoutX="1014.0" layoutY="186.0" prefHeight="42.0" prefWidth="320.0" promptText="Address">
          <font>
             <Font size="18.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtContact" labelFloat="true" layoutX="86.0" layoutY="682.0" prefHeight="42.0" prefWidth="290.0" promptText="Contact">
+      <JFXTextField fx:id="txtContact" labelFloat="true" layoutX="79.0" layoutY="286.0" prefHeight="42.0" prefWidth="290.0" promptText="Contact">
          <font>
             <Font size="18.0" />
          </font>
       </JFXTextField>
-      <JFXDatePicker fx:id="txtDob" layoutX="488.0" layoutY="691.0" prefHeight="44.0" prefWidth="253.0" promptText="Date Of Birth" styleClass="date" stylesheets="@assests/styles/RegistrationForm.css" />
-      <Label layoutX="927.0" layoutY="711.0" text="Gender">
+      <JFXDatePicker fx:id="txtDob" layoutX="481.0" layoutY="295.0" prefHeight="44.0" prefWidth="253.0" promptText="Date Of Birth" styleClass="date" stylesheets="@assests/styles/RegistrationForm.css" />
+      <Label layoutX="920.0" layoutY="315.0" text="Gender">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXRadioButton fx:id="rbtnMale" layoutX="1054.0" layoutY="712.0" onAction="#setGenderOnAction" selected="true" text="Male">
+      <JFXRadioButton fx:id="rbtnMale" layoutX="1047.0" layoutY="316.0" onAction="#setGenderOnAction" selected="true" text="Male">
          <font>
             <Font size="17.0" />
          </font>
@@ -80,7 +79,7 @@
             <ToggleGroup fx:id="studentGender" />
          </toggleGroup>
       </JFXRadioButton>
-      <JFXRadioButton fx:id="rbtnFemale" layoutX="1162.0" layoutY="712.0" onAction="#setGenderOnAction" text="Female" toggleGroup="$studentGender">
+      <JFXRadioButton fx:id="rbtnFemale" layoutX="1155.0" layoutY="316.0" onAction="#setGenderOnAction" text="Female" toggleGroup="$studentGender">
          <font>
             <Font size="17.0" />
          </font>

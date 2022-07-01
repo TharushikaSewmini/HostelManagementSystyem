@@ -7,11 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface RoomBO extends SuperBO {
-    public boolean add(RoomDTO roomDTO) throws Exception;
+    boolean add(RoomDTO roomDTO) throws Exception;
 
-    public boolean update(RoomDTO roomDTO) throws Exception;
+    boolean update(RoomDTO roomDTO) throws Exception;
 
-    public boolean delete(String id) throws Exception;
+    boolean delete(String id) throws Exception;
 
     ArrayList<RoomDTO> getAllRoomTypes() throws Exception;
 

@@ -8,11 +8,11 @@ import lk.ijse.hostelmanagementsystem.dto.StudentDTO;
 import java.util.ArrayList;
 
 public interface RegistrationBO extends SuperBO {
-    public boolean add(StudentDTO studentDTO) throws Exception;
+    boolean add(StudentDTO studentDTO) throws Exception;
 
-    public boolean update(StudentDTO studentDTO) throws Exception;
+    boolean update(StudentDTO studentDTO) throws Exception;
 
-    public boolean delete(String id) throws Exception;
+    boolean delete(String id) throws Exception;
 
     ArrayList<StudentDTO> getAllRoomTypes() throws Exception;
 
@@ -24,5 +24,4 @@ public interface RegistrationBO extends SuperBO {
 
     boolean addReservation(ReservationDTO reservationDTO) throws Exception;
 
-    //boolean addReservation(ReservationDTO reservationDTO) throws Exception;
 }

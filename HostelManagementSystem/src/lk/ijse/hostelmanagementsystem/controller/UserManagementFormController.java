@@ -10,12 +10,9 @@ import javafx.scene.input.KeyEvent;
 import lk.ijse.hostelmanagementsystem.bo.BOFactory;
 import lk.ijse.hostelmanagementsystem.bo.BOType;
 import lk.ijse.hostelmanagementsystem.bo.custom.UserBO;
-import lk.ijse.hostelmanagementsystem.dto.StudentDTO;
 import lk.ijse.hostelmanagementsystem.dto.UserDTO;
 import lk.ijse.hostelmanagementsystem.util.ValidationUtil;
-import lk.ijse.hostelmanagementsystem.view.tm.StudentTM;
 
-import java.time.LocalDate;
 import java.util.LinkedHashMap;
 import java.util.regex.Pattern;
 

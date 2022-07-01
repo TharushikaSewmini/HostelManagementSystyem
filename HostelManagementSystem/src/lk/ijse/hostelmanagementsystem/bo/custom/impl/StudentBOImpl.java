@@ -4,6 +4,7 @@ import lk.ijse.hostelmanagementsystem.bo.custom.StudentBO;
 import lk.ijse.hostelmanagementsystem.dao.DAOFactory;
 import lk.ijse.hostelmanagementsystem.dao.DAOType;
 import lk.ijse.hostelmanagementsystem.dao.custom.StudentDAO;
+import lk.ijse.hostelmanagementsystem.dto.CustomDTO;
 import lk.ijse.hostelmanagementsystem.dto.StudentDTO;
 import lk.ijse.hostelmanagementsystem.entity.Student;
 
@@ -12,6 +13,11 @@ import java.util.List;
 
 public class StudentBOImpl implements StudentBO {
     private final StudentDAO studentDAO = DAOFactory.getInstance().getDAO(DAOType.STUDENT);
+
+    @Override
+    public ArrayList<CustomDTO> getStudentNotPaidKeyMoney() throws Exception {
+        return null;
+    }
 
     @Override
     public boolean add(StudentDTO studentDTO) throws Exception {

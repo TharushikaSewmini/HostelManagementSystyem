@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="939.0" prefWidth="1428.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostelmanagementsystem.controller.StudentPaymentFormController">
+   <children>
+      <Label layoutX="123.0" layoutY="39.0" text="Student Payment Details" textFill="#673a79">
+         <font>
+            <Font name="System Bold" size="31.0" />
+         </font>
+      </Label>
+      <Separator layoutX="31.0" layoutY="95.0" prefHeight="3.0" prefWidth="1297.0" />
+      <TableView fx:id="tblStudentPayment" layoutX="100.0" layoutY="157.0" prefHeight="366.0" prefWidth="1159.0">
+         <columns>
+            <TableColumn fx:id="colStudentId" prefWidth="189.0" text="Student Id" />
+            <TableColumn fx:id="colStudentName" prefWidth="379.0" text="Name" />
+            <TableColumn fx:id="colReservationId" prefWidth="228.0" text="Reservation Id" />
+            <TableColumn fx:id="colStatus" prefWidth="362.0" text="Status" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

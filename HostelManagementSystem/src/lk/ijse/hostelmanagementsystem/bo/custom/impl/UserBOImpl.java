@@ -3,16 +3,9 @@ package lk.ijse.hostelmanagementsystem.bo.custom.impl;
 import lk.ijse.hostelmanagementsystem.bo.custom.UserBO;
 import lk.ijse.hostelmanagementsystem.dao.DAOFactory;
 import lk.ijse.hostelmanagementsystem.dao.DAOType;
-import lk.ijse.hostelmanagementsystem.dao.custom.RoomDAO;
 import lk.ijse.hostelmanagementsystem.dao.custom.UserDAO;
-import lk.ijse.hostelmanagementsystem.dto.RoomDTO;
-import lk.ijse.hostelmanagementsystem.dto.StudentDTO;
 import lk.ijse.hostelmanagementsystem.dto.UserDTO;
-import lk.ijse.hostelmanagementsystem.entity.Room;
-import lk.ijse.hostelmanagementsystem.entity.Student;
 import lk.ijse.hostelmanagementsystem.entity.User;
-
-import java.sql.SQLException;
 
 public class UserBOImpl implements UserBO {
     private final UserDAO userDAO = DAOFactory.getInstance().getDAO(DAOType.USER);

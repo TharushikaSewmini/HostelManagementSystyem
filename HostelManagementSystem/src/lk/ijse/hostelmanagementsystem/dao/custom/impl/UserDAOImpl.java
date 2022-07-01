@@ -1,12 +1,10 @@
 package lk.ijse.hostelmanagementsystem.dao.custom.impl;
 
 import lk.ijse.hostelmanagementsystem.dao.custom.UserDAO;
-import lk.ijse.hostelmanagementsystem.entity.Student;
 import lk.ijse.hostelmanagementsystem.entity.User;
 import lk.ijse.hostelmanagementsystem.util.FactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 
 import java.util.List;

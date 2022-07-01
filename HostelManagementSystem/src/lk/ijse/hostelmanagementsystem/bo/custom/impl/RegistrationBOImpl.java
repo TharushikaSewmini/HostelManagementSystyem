@@ -70,14 +70,15 @@ public class RegistrationBOImpl implements RegistrationBO {
 
     @Override
     public String generateNewReservationId() throws Exception {
-        String id = reservationDAO.generateNewID();
+        /*String id = reservationDAO.generateNewID();
 
         if (id!=null) {
             int newStudentId = Integer.parseInt(id.replace("R", "")) + 1;
             return String.format("R%03d", newStudentId);
         } else {
             return "R001";
-        }
+        }*/
+        return null;
     }
 
     @Override
