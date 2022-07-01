@@ -4,9 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +20,13 @@ public class Room implements SuperEntity {
     private double keyMoney;
     private int qty;
 
-    /*@OneToMany(mappedBy = "room")
-    private List<Reservation> roomList = new ArrayList<>();*/
+    @ManyToMany(mappedBy = "room", cascade = CascadeType.ALL)
+    private List<Reservation> roomList = new ArrayList<>();
+
+    public Room(String roomTypeId, String type, double keyMoney, int qty) {
+        this.roomTypeId = roomTypeId;
+        this.type = type;
+        this.keyMoney = keyMoney;
+        this.qty = qty;
+    }
 }

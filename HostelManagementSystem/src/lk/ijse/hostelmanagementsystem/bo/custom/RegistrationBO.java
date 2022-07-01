@@ -1,6 +1,7 @@
 package lk.ijse.hostelmanagementsystem.bo.custom;
 
 import lk.ijse.hostelmanagementsystem.bo.SuperBO;
+import lk.ijse.hostelmanagementsystem.dto.ReservationDTO;
 import lk.ijse.hostelmanagementsystem.dto.RoomDTO;
 import lk.ijse.hostelmanagementsystem.dto.StudentDTO;
 
@@ -18,4 +19,10 @@ public interface RegistrationBO extends SuperBO {
     String generateNewStudentId() throws Exception;
 
     RoomDTO searchRoomType(String type) throws Exception;
+
+    String generateNewReservationId() throws Exception;
+
+    boolean addReservation(ReservationDTO reservationDTO) throws Exception;
+
+    //boolean addReservation(ReservationDTO reservationDTO) throws Exception;
 }

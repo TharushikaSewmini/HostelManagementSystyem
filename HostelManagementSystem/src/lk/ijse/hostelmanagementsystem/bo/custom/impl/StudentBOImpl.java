@@ -3,7 +3,7 @@ package lk.ijse.hostelmanagementsystem.bo.custom.impl;
 import lk.ijse.hostelmanagementsystem.bo.custom.StudentBO;
 import lk.ijse.hostelmanagementsystem.dao.DAOFactory;
 import lk.ijse.hostelmanagementsystem.dao.DAOType;
-import lk.ijse.hostelmanagementsystem.dao.custom.impl.StudentDAOImpl;
+import lk.ijse.hostelmanagementsystem.dao.custom.StudentDAO;
 import lk.ijse.hostelmanagementsystem.dto.StudentDTO;
 import lk.ijse.hostelmanagementsystem.entity.Student;
 
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentBOImpl implements StudentBO {
-    private final StudentDAOImpl studentDAO = DAOFactory.getInstance().getDAO(DAOType.STUDENT);
+    private final StudentDAO studentDAO = DAOFactory.getInstance().getDAO(DAOType.STUDENT);
 
     @Override
     public boolean add(StudentDTO studentDTO) throws Exception {
@@ -27,7 +27,7 @@ public class StudentBOImpl implements StudentBO {
 
     @Override
     public boolean update(StudentDTO studentDTO) throws Exception {
-        return studentDAO.add(new Student(
+        return studentDAO.update(new Student(
                 studentDTO.getSId(),
                 studentDTO.getName(),
                 studentDTO.getAddress(),
@@ -40,6 +40,12 @@ public class StudentBOImpl implements StudentBO {
     @Override
     public boolean delete(String id) throws Exception {
         return studentDAO.delete(id);
+    }
+
+    @Override
+    public StudentDTO getStudent(String id) throws Exception {
+        Student s = studentDAO.get(id);
+        return new StudentDTO(s.getSId(), s.getName(), s.getAddress(), s.getContact(), s.getDob(), s.getGender());
     }
 
     @Override

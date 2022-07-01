@@ -56,7 +56,7 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public Room find(String s) throws Exception {
+    public Room get(String s) throws Exception {
         /*Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 

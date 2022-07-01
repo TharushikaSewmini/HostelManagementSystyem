@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -19,17 +17,22 @@
          </font>
       </Label>
       <Separator layoutX="14.0" layoutY="93.0" prefHeight="3.0" prefWidth="1297.0" />
-      <JFXTextField fx:id="txtType" labelFloat="true" layoutX="90.0" layoutY="241.0" prefHeight="42.0" prefWidth="313.0" promptText="Type">
+      <JFXTextField fx:id="txtRoomTypeId" labelFloat="true" layoutX="90.0" layoutY="193.0" prefHeight="42.0" prefWidth="313.0" promptText="Room Type Id">
          <font>
             <Font size="18.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtQty" labelFloat="true" layoutX="90.0" layoutY="411.0" prefHeight="39.0" prefWidth="184.0" promptText="Rooms Qty">
+      <JFXTextField fx:id="txtType" labelFloat="true" layoutX="565.0" layoutY="193.0" prefHeight="42.0" prefWidth="313.0" promptText="Type">
          <font>
             <Font size="18.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtKeyMoney" labelFloat="true" layoutX="89.0" layoutY="338.0" prefHeight="39.0" prefWidth="200.0" promptText="Key Money">
+      <JFXTextField fx:id="txtQty" labelFloat="true" layoutX="570.0" layoutY="321.0" prefHeight="39.0" prefWidth="195.0" promptText="Rooms Qty">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtKeyMoney" labelFloat="true" layoutX="90.0" layoutY="321.0" prefHeight="39.0" prefWidth="232.0" promptText="Key Money">
          <font>
             <Font size="18.0" />
          </font>
@@ -42,43 +45,20 @@
             <TableColumn fx:id="colQty" prefWidth="261.0" text="Rooms Qty" />
          </columns>
       </TableView>
-      <JFXButton fx:id="btnSaveRoom" buttonType="RAISED" layoutX="435.0" layoutY="460.0" onAction="#saveRoomOnAction" prefHeight="44.0" prefWidth="232.0" style="-fx-background-color: #16a085; -fx-background-radius: 6;" text="Save" textFill="WHITE">
+      <JFXButton fx:id="btnSaveRoom" buttonType="RAISED" layoutX="472.0" layoutY="460.0" onAction="#saveRoomOnAction" prefHeight="44.0" prefWidth="195.0" style="-fx-background-color: #16a085; -fx-background-radius: 6;" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btnAddNewRoom" buttonType="RAISED" layoutX="1116.0" layoutY="115.0" onAction="#addNewRoomOnAction" prefHeight="44.0" prefWidth="158.0" style="-fx-background-color: #9b59b6; -fx-background-radius: 6;" text="+New Room" textFill="WHITE">
+      <JFXButton fx:id="btnAddNewRoom" buttonType="RAISED" layoutX="1131.0" layoutY="149.0" onAction="#addNewRoomOnAction" prefHeight="44.0" prefWidth="158.0" style="-fx-background-color: #9b59b6; -fx-background-radius: 6;" text="+New Room" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btnDeleteRoom" buttonType="RAISED" layoutX="792.0" layoutY="460.0" onAction="#deleteRoomOnAction" prefHeight="44.0" prefWidth="217.0" style="-fx-background-color: #16a085; -fx-background-radius: 8;" text="Delete" textFill="WHITE">
+      <JFXButton fx:id="btnDeleteRoom" buttonType="RAISED" layoutX="814.0" layoutY="460.0" onAction="#deleteRoomOnAction" prefHeight="44.0" prefWidth="195.0" style="-fx-background-color: #16a085; -fx-background-radius: 8;" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </JFXButton>
-      <JFXRadioButton fx:id="rbtnRoomTypeId1" layoutX="90.0" layoutY="170.0" onAction="#roomTypeSetOnAction" selected="true" text="RM-1324">
-         <font>
-            <Font size="17.0" />
-         </font>
-         <toggleGroup>
-            <ToggleGroup fx:id="roomTypeId" />
-         </toggleGroup>
-      </JFXRadioButton>
-      <JFXRadioButton fx:id="rbtnRoomTypeId2" layoutX="220.0" layoutY="170.0" onAction="#roomTypeSetOnAction" text="RM-5467" toggleGroup="$roomTypeId">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </JFXRadioButton>
-      <JFXRadioButton fx:id="rbtnRoomTypeId3" layoutX="364.0" layoutY="170.0" onAction="#roomTypeSetOnAction" text="RM-7896" toggleGroup="$roomTypeId">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </JFXRadioButton>
-      <JFXRadioButton fx:id="rbtnRoomTypeId4" layoutX="514.0" layoutY="170.0" onAction="#roomTypeSetOnAction" text="RM-0093" toggleGroup="$roomTypeId">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </JFXRadioButton>
    </children>
 </AnchorPane>

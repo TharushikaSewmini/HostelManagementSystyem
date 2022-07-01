@@ -27,7 +27,8 @@ public class FactoryConfiguration {
         Metadata meta = new MetadataSources(ssr)
                 .addAnnotatedClass(Room.class)
                 .addAnnotatedClass(Student.class)
-                .addAnnotatedClass(Reservation.class).getMetadataBuilder().build();
+                .addAnnotatedClass(Reservation.class)
+                .addAnnotatedClass(User.class).getMetadataBuilder().build();
 
         sessionFactory =meta.getSessionFactoryBuilder().build();
 

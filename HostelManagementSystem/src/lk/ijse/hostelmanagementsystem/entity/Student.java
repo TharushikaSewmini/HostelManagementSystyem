@@ -4,9 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,15 +14,25 @@ import java.util.List;
 @Data
 
 @Entity
-public class Student {
+public class Student implements SuperEntity {
     @Id
     private String sId;
     private String name;
+    @Column(columnDefinition = "TEXT")
     private String address;
     private String contact;
     private LocalDate dob;
     private String gender;
 
-    /*@OneToMany(mappedBy = "student")
-    private List<Reservation> studentList = new ArrayList<>();*/
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    private List<Reservation> studentList = new ArrayList<>();
+
+    public Student(String sId, String name, String address, String contact, LocalDate dob, String gender) {
+        this.sId = sId;
+        this.name = name;
+        this.address = address;
+        this.contact = contact;
+        this.dob = dob;
+        this.gender = gender;
+    }
 }

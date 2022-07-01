@@ -38,7 +38,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXRadioButton fx:id="rbtnMale" layoutX="210.0" layoutY="639.0" onAction="#setGenderOnAction" selected="true" text="Male">
+      <JFXRadioButton fx:id="rbtnMale" layoutX="210.0" layoutY="639.0" selected="true" text="Male">
          <font>
             <Font size="17.0" />
          </font>
@@ -46,18 +46,18 @@
             <ToggleGroup fx:id="gender" />
          </toggleGroup>
       </JFXRadioButton>
-      <JFXRadioButton fx:id="rbtnFemale" layoutX="318.0" layoutY="639.0" onAction="#setGenderOnAction" text="Female" toggleGroup="$gender">
+      <JFXRadioButton fx:id="rbtnFemale" layoutX="318.0" layoutY="639.0" text="Female" toggleGroup="$gender">
          <font>
             <Font size="17.0" />
          </font>
       </JFXRadioButton>
-      <JFXComboBox fx:id="cmbRoomType" labelFloat="true" layoutX="79.0" layoutY="687.0" onAction="#roomTypeOnAction" prefHeight="44.0" prefWidth="303.0" promptText="Room Type" styleClass="cell" stylesheets="@assests/styles/RegistrationForm.css" />
+      <JFXComboBox fx:id="cmbRoomType" labelFloat="true" layoutX="79.0" layoutY="687.0" prefHeight="44.0" prefWidth="303.0" promptText="Room Type" styleClass="cell" stylesheets="@assests/styles/RegistrationForm.css" />
       <JFXButton fx:id="btnCheckRoomsAvailability" buttonType="RAISED" layoutX="200.0" layoutY="765.0" prefHeight="42.0" prefWidth="136.0" style="-fx-background-color: #16a085; -fx-background-radius: 6;" text="Check" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </JFXButton>
-      <JFXDatePicker fx:id="txtRegDate" layoutX="748.0" layoutY="177.0" prefHeight="44.0" prefWidth="253.0" promptText="Date" styleClass="date" stylesheets="@assests/styles/RegistrationForm.css" />
+      <JFXDatePicker fx:id="txtRegDate" layoutX="1015.0" layoutY="198.0" prefHeight="44.0" prefWidth="253.0" promptText="Date" styleClass="date" stylesheets="@assests/styles/RegistrationForm.css" />
       <JFXTextField fx:id="txtRoomTypeId" labelFloat="true" layoutX="723.0" layoutY="318.0" prefHeight="42.0" prefWidth="217.0" promptText="Room Type Id">
          <font>
             <Font size="18.0" />
@@ -83,10 +83,15 @@
             <Font size="18.0" />
          </font>
       </JFXTextField>
-      <JFXButton fx:id="btnRegister" buttonType="RAISED" layoutX="831.0" layoutY="756.0" onAction="#registerOnAction" prefHeight="56.0" prefWidth="303.0" style="-fx-background-color: #16a085; -fx-background-radius: 8;" text="Register" textFill="WHITE">
+      <JFXButton fx:id="btnRegister" buttonType="RAISED" layoutX="831.0" layoutY="756.0" prefHeight="56.0" prefWidth="303.0" style="-fx-background-color: #16a085; -fx-background-radius: 8;" text="Register" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </JFXButton>
+      <JFXTextField fx:id="txtReservationId" labelFloat="true" layoutX="714.0" layoutY="212.0" prefHeight="42.0" prefWidth="217.0" promptText="Reserevation Id">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXTextField>
    </children>
 </AnchorPane>

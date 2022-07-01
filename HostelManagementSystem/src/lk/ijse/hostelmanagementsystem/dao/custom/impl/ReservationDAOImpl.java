@@ -1,6 +1,7 @@
 package lk.ijse.hostelmanagementsystem.dao.custom.impl;
 
-import lk.ijse.hostelmanagementsystem.dao.custom.StudentDAO;
+import lk.ijse.hostelmanagementsystem.dao.custom.ReservationDAO;
+import lk.ijse.hostelmanagementsystem.entity.Reservation;
 import lk.ijse.hostelmanagementsystem.entity.Student;
 import lk.ijse.hostelmanagementsystem.util.FactoryConfiguration;
 import org.hibernate.Session;
@@ -10,9 +11,9 @@ import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class StudentDAOImpl implements StudentDAO {
+public class ReservationDAOImpl implements ReservationDAO {
     @Override
-    public boolean add(Student entity) throws Exception {
+    public boolean add(Reservation entity) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
@@ -24,7 +25,7 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public boolean update(Student entity) throws Exception {
+    public boolean update(Reservation entity) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
@@ -45,7 +46,7 @@ public class StudentDAOImpl implements StudentDAO {
         Transaction transaction = session.beginTransaction();
 
         try {
-            session.delete(session.get(Student.class, id));
+            session.delete(session.get(Reservation.class, id));
             transaction.commit();
             session.close();
             return true;
@@ -56,15 +57,15 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public Student get(String id) throws Exception {
+    public Reservation get(String id) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
         try {
-            Student student = session.get(Student.class, id);
+            Reservation reservation = session.get(Reservation.class, id);
             transaction.commit();
             session.close();
-            return student;
+            return reservation;
         } catch (Exception exception) {
             transaction.rollback();
         }
@@ -72,31 +73,44 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public List<Student> getAll() throws Exception {
+    public List<Reservation> getAll() throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
         try {
 
-            Query query = session.createQuery("FROM Student");
-            List<Student> studentList = query.list();
+            Query query = session.createQuery("FROM Reservation");
+            List<Reservation> roomList = query.list();
 
             transaction.commit();
             session.close();
 
-            return studentList;
+            return roomList;
         } catch (Exception exception) {
             transaction.rollback();
         }
         return null;
     }
+
+    /*@Override
+    public boolean exist(String s) throws Exception {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        Room room = session.get(Room.class, s);
+        //String id = (String) sqlQuery.uniqueResult();
+
+        transaction.commit();
+        session.close();
+        return true;
+    }*/
 
     @Override
     public String generateNewID() throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        NativeQuery sqlQuery = session.createSQLQuery("SELECT sId FROM Student ORDER BY sId DESC LIMIT 1");
+        NativeQuery sqlQuery = session.createSQLQuery("SELECT resId FROM Reservation ORDER BY resId DESC LIMIT 1");
         String id = (String) sqlQuery.uniqueResult();
 
         transaction.commit();
@@ -105,21 +119,22 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public Student search(String id) throws Exception {
+    public Reservation search(String type) throws Exception {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
         try {
 
-            Query query = session.createQuery("FROM Student WHERE sId= : student_Id");
-            query.setParameter("student_Id", id);
-            Student student1 = (Student) query.uniqueResult();
+            Query query = session.createQuery("FROM Reservation WHERE resId= : room_type");
+            query.setParameter("room_type", type);
+            Reservation roomType = (Reservation) query.uniqueResult();
             transaction.commit();
             session.close();
-            return student1;
+            return roomType;
         } catch (Exception exception) {
             transaction.rollback();
         }
         return null;
+
     }
 }

@@ -1,23 +1,22 @@
 package lk.ijse.hostelmanagementsystem.controller;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.hostelmanagementsystem.bo.BOFactory;
 import lk.ijse.hostelmanagementsystem.bo.BOType;
-import lk.ijse.hostelmanagementsystem.bo.custom.impl.RoomBoImpl;
+import lk.ijse.hostelmanagementsystem.bo.custom.RoomBO;
 import lk.ijse.hostelmanagementsystem.dto.RoomDTO;
 import lk.ijse.hostelmanagementsystem.view.tm.RoomTM;
 
 import java.util.ArrayList;
 
 public class RoomManagementFormController {
+    public JFXTextField txtRoomTypeId;
     public JFXTextField txtType;
     public JFXTextField txtQty;
     public JFXTextField txtKeyMoney;
@@ -29,21 +28,15 @@ public class RoomManagementFormController {
     public JFXButton btnSaveRoom;
     public JFXButton btnDeleteRoom;
     public JFXButton btnAddNewRoom;
-    public JFXRadioButton rbtnRoomTypeId1;
-    public JFXRadioButton rbtnRoomTypeId2;
-    public JFXRadioButton rbtnRoomTypeId3;
-    public JFXRadioButton rbtnRoomTypeId4;
-    public ToggleGroup roomTypeId;
 
     // Property Injection(DI)
-    private final RoomBoImpl roomBOImpl = BOFactory.getInstance().getBO(BOType.ROOM);
+    private final RoomBO roomBO = BOFactory.getInstance().getBO(BOType.ROOM);
 
     public void initialize() {
         colRoomId.setCellValueFactory(new PropertyValueFactory<>("roomTypeId"));
         colType.setCellValueFactory(new PropertyValueFactory<>("type"));
         colKeyMoney.setCellValueFactory(new PropertyValueFactory<>("keyMoney"));
         colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
-        //colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
 
         initUI();
 
@@ -53,14 +46,12 @@ public class RoomManagementFormController {
             btnSaveRoom.setDisable(newValue == null);
 
             if (newValue != null) {
+                txtRoomTypeId.setText(newValue.getRoomTypeId());
                 txtType.setText(newValue.getType());
                 txtKeyMoney.setText(String.valueOf(newValue.getKeyMoney()));
                 txtQty.setText(String.valueOf(newValue.getQty()));
 
-                rbtnRoomTypeId1.setSelected(true);
-                rbtnRoomTypeId2.setSelected(true);
-                rbtnRoomTypeId3.setSelected(true);
-                rbtnRoomTypeId4.setSelected(true);
+                txtRoomTypeId.setDisable(false);
                 txtType.setDisable(false);
                 txtKeyMoney.setDisable(false);
                 txtQty.setDisable(false);
@@ -75,7 +66,7 @@ public class RoomManagementFormController {
         tblRoom.getItems().clear();
         /*Get all rooms*/
         try {
-            ArrayList<RoomDTO> allRooms = roomBOImpl.getAllRoomTypes();
+            ArrayList<RoomDTO> allRooms = roomBO.getAllRoomTypes();
             for (RoomDTO room : allRooms) {
                 tblRoom.getItems().add(new RoomTM(room.getRoomTypeId(), room.getType(), room.getKeyMoney(), room.getQty()));
             }
@@ -85,13 +76,11 @@ public class RoomManagementFormController {
     }
 
     private void initUI() {
+        txtRoomTypeId.clear();
         txtType.clear();
         txtKeyMoney.clear();
         txtQty.clear();
-        rbtnRoomTypeId1.setSelected(false);
-        rbtnRoomTypeId2.setSelected(false);
-        rbtnRoomTypeId3.setSelected(false);
-        rbtnRoomTypeId4.setSelected(false);
+        txtRoomTypeId.setDisable(true);
         txtType.setDisable(true);
         txtKeyMoney.setDisable(true);
         txtQty.setDisable(true);
@@ -99,7 +88,7 @@ public class RoomManagementFormController {
         btnDeleteRoom.setDisable(true);
     }
 
-    private String getRoomTypeId() {
+    /*private String getRoomTypeId() {
         if (rbtnRoomTypeId1.isSelected()) {
             return "RM-1324";
         } else if (rbtnRoomTypeId2.isSelected()) {
@@ -111,9 +100,9 @@ public class RoomManagementFormController {
         }
         return null;
 
-    }
+    }*/
 
-    private String getType() {
+    /*private String getType() {
         if (rbtnRoomTypeId1.isSelected()) {
             return "Non-AC";
         } else if (rbtnRoomTypeId2.isSelected()) {
@@ -125,17 +114,17 @@ public class RoomManagementFormController {
         }
         return null;
 
-    }
+    }*/
 
     public void saveRoomOnAction(ActionEvent actionEvent) {
-        String roomTypeId = getRoomTypeId();
+        String roomTypeId = txtRoomTypeId.getText();
         String type = txtType.getText();
 
-        /*if (!type.matches("[A-Za-z0-9 ]+")) {
+        if (!type.matches("[A-Za-z0-9 ]+")) {
             new Alert(Alert.AlertType.ERROR, "Invalid type").show();
             txtType.requestFocus();
             return;
-        } else*/ if (!txtKeyMoney.getText().matches("^[0-9]+[.]?[0-9]*$")) {
+        } else if (!txtKeyMoney.getText().matches("^[0-9]+[.]?[0-9]*$")) {
             new Alert(Alert.AlertType.ERROR, "Invalid key money").show();
             txtKeyMoney.requestFocus();
             return;
@@ -150,8 +139,8 @@ public class RoomManagementFormController {
 
         if (btnSaveRoom.getText().equalsIgnoreCase("save")) {
             try {
-                //Save Customer
-                if (roomBOImpl.add(new RoomDTO(roomTypeId, type, keyMoney, qty))) {
+                //Save Room
+                if (roomBO.add(new RoomDTO(roomTypeId, type, keyMoney, qty))) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Saved.!").show();
                 }
 
@@ -161,16 +150,16 @@ public class RoomManagementFormController {
             }
         } else {
             try {
-                /*Update Customer*/
+                /*Update Room*/
 
-                if (roomBOImpl.update(new RoomDTO(roomTypeId, type, keyMoney, qty))) {
+                if (roomBO.update(new RoomDTO(roomTypeId, type, keyMoney, qty))) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Updated.!").show();
                 }
 
-                RoomTM selectedItem = tblRoom.getSelectionModel().getSelectedItem();
-                selectedItem.setType(type);
-                selectedItem.setKeyMoney(keyMoney);
-                selectedItem.setQty(qty);
+                RoomTM selectedRoom = tblRoom.getSelectionModel().getSelectedItem();
+                selectedRoom.setType(type);
+                selectedRoom.setKeyMoney(keyMoney);
+                selectedRoom.setQty(qty);
                 tblRoom.refresh();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -183,7 +172,7 @@ public class RoomManagementFormController {
         /*Delete Room*/
         String roomTypeId = tblRoom.getSelectionModel().getSelectedItem().getRoomTypeId();
         try {
-            if (roomBOImpl.delete(roomTypeId)) {
+            if (roomBO.delete(roomTypeId)) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Deleted.! " + roomTypeId).show();
             }
 
@@ -197,26 +186,24 @@ public class RoomManagementFormController {
     }
 
     public void addNewRoomOnAction(ActionEvent actionEvent) {
-        rbtnRoomTypeId1.setSelected(false);
-        rbtnRoomTypeId2.setSelected(false);
-        rbtnRoomTypeId3.setSelected(false);
-        rbtnRoomTypeId4.setSelected(false);
+        txtRoomTypeId.setDisable(false);
         txtType.setDisable(false);
         txtKeyMoney.setDisable(false);
         txtQty.setDisable(false);
+        txtRoomTypeId.clear();
         txtType.clear();
         txtKeyMoney.clear();
         txtQty.clear();
-        txtType.requestFocus();
+        txtRoomTypeId.requestFocus();
         btnSaveRoom.setDisable(false);
         btnSaveRoom.setText("Save");
         tblRoom.getSelectionModel().clearSelection();
     }
 
-    public void roomTypeSetOnAction(ActionEvent actionEvent) {
+    /*public void roomTypeSetOnAction(ActionEvent actionEvent) {
         txtType.setText(getType());
 
-    }
+    }*/
 
     /*private String generateNewId() {
         try {

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="939.0" prefWidth="1428.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostelmanagementsystem.controller.UserManagementFormController">
+   <children>
+      <Label layoutX="117.0" layoutY="37.0" text="Change Users" textFill="#673a79">
+         <font>
+            <Font name="System Bold" size="31.0" />
+         </font>
+      </Label>
+      <Separator layoutX="25.0" layoutY="93.0" prefHeight="3.0" prefWidth="1297.0" />
+      <Label layoutX="413.0" layoutY="166.0" text="User Id :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="413.0" layoutY="291.0" text="Current User Name :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="413.0" layoutY="387.0" text="New User Name :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="408.0" layoutY="487.0" text="New Password :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="413.0" layoutY="607.0" text="Confirm New Password :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUserId" layoutX="408.0" layoutY="212.0" onKeyReleased="#textFields_Key_Released" prefHeight="42.0" prefWidth="347.0" />
+      <TextField fx:id="txtCurrentUserName" layoutX="410.0" layoutY="331.0" onKeyReleased="#textFields_Key_Released" prefHeight="42.0" prefWidth="347.0" />
+      <TextField fx:id="txtNewUserName" layoutX="410.0" layoutY="428.0" onKeyReleased="#textFields_Key_Released" prefHeight="42.0" prefWidth="347.0" />
+      <PasswordField fx:id="pwdNewPassword" layoutX="410.0" layoutY="527.0" onKeyReleased="#textFields_Key_Released" prefHeight="45.0" prefWidth="347.0" />
+      <PasswordField fx:id="pwdConfirmPassword" layoutX="410.0" layoutY="645.0" onKeyReleased="#textFields_Key_Released" prefHeight="45.0" prefWidth="347.0" />
+      <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="180.0" layoutY="804.0" onAction="#saveOnAction" prefHeight="44.0" prefWidth="195.0" style="-fx-background-color: #16a085; -fx-background-radius: 6;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnCancel" buttonType="RAISED" layoutX="575.0" layoutY="804.0" onAction="#cancelOnAction" prefHeight="44.0" prefWidth="195.0" style="-fx-background-color: #16a085; -fx-background-radius: 8;" text="Cancel" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

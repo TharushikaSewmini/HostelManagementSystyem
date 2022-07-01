@@ -40,7 +40,8 @@ public class DashBoardFormController implements Loader {
         loadUi("RegistrationForm");
     }
 
-    public void employeeOnAction(ActionEvent actionEvent) {
+    public void employeeOnAction(ActionEvent actionEvent) throws IOException {
+        loadUi("UserManagementForm");
     }
 
     public void keyMoneyOnAction(ActionEvent actionEvent) throws IOException {
