@@ -16,11 +16,6 @@ public class StudentBOImpl implements StudentBO {
     private final StudentDAO studentDAO = DAOFactory.getInstance().getDAO(DAOType.STUDENT);
 
     @Override
-    public ArrayList<CustomDTO> getStudentNotPaidKeyMoney() throws Exception {
-        return null;
-    }
-
-    @Override
     public boolean add(StudentDTO studentDTO) throws Exception {
         return studentDAO.add(new Student(
                 studentDTO.getSId(),
@@ -49,11 +44,6 @@ public class StudentBOImpl implements StudentBO {
         return studentDAO.delete(id);
     }
 
-    @Override
-    public StudentDTO getStudent(String id) throws Exception {
-        Student s = studentDAO.get(id);
-        return new StudentDTO(s.getSId(), s.getName(), s.getAddress(), s.getContact(), s.getDob(), s.getGender());
-    }
 
     @Override
     public ArrayList<StudentDTO> getAllStudents() throws Exception {
@@ -82,15 +72,6 @@ public class StudentBOImpl implements StudentBO {
         } else {
             return "S001";
         }
-    }
-
-    @Override
-    public StudentDTO searchStudent(String student) throws Exception {
-        Student s = studentDAO.search(student);
-        if (s!=null) {
-            return new StudentDTO(s.getSId(), s.getName(), s.getAddress(), s.getContact(), s.getDob(), s.getGender());
-        }
-        return null;
     }
 
     @Override

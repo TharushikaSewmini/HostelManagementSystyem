@@ -26,7 +26,6 @@ public class Reservation implements SuperEntity {
     @ManyToMany(mappedBy = "roomList")
     private List<Room> room;
 
-    @Column(nullable = false)
     private String status;
 
     public Reservation(String resId, String status) {
@@ -34,11 +33,11 @@ public class Reservation implements SuperEntity {
         this.status = status;
     }
 
-    /*public Reservation(String resId, LocalDate date, String status) {
+    public Reservation(String resId, LocalDate date, String status) {
         this.resId = resId;
         this.date = date;
         this.status = status;
-    }*/
+    }
 
     /*public Reservation(String resId, String status) {
     }*/

@@ -9,6 +9,4 @@ public interface UserBO extends SuperBO {
     boolean update(UserDTO userDTO) throws Exception;
 
     String getUserName(String id) throws Exception;
-
-    UserDTO search(String id) throws Exception;
 }

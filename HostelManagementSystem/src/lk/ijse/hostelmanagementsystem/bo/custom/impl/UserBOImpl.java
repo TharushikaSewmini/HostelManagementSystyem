@@ -32,13 +32,4 @@ public class UserBOImpl implements UserBO {
      public String getUserName(String id) throws Exception {
          return userDAO.getUserName(id);
      }
-
-    @Override
-    public UserDTO search(String id) throws Exception {
-        User user = userDAO.search(id);
-        if (user!=null) {
-            return new UserDTO(user.getUserId(), user.getUserName(), user.getPassword());
-        }
-        return null;
-    }
 }

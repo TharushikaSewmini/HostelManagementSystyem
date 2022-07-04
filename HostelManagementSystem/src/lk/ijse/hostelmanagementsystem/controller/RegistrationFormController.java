@@ -36,9 +36,7 @@ public class RegistrationFormController {
     public JFXTextField txtKeyMoney;
     public JFXTextField txtPay;
     public JFXButton btnRegister;
-    public Label lblRemainKeyMoney;
     public JFXButton btnAddReserveRoom;
-    public Label lblOrderId;
     public TableView<RoomTM> tblReserveRoom;
     public TableColumn colRoomId;
     public TableColumn colType;
@@ -86,7 +84,7 @@ public class RegistrationFormController {
                         if (search.getQty() > 0 ) {
                             new Alert(Alert.AlertType.INFORMATION, newValue + " rooms are available").show();
 
-                            //txtReservationId.setDisable(false);
+                            lblReservationId.setDisable(false);
                             //txtRegDate.setDisable(false);
                             txtRoomTypeId.setDisable(false);
                             txtType.setDisable(false);
@@ -143,17 +141,7 @@ public class RegistrationFormController {
 
                                 tblReserveRoom.getItems().add(new RoomTM(roomTypeId, roomType, keyMoney));
 
-
-
-
-
-
-
-
-
-
                                 List<RoomDTO> rooms = (tblReserveRoom.getItems().stream().map(tm -> new RoomDTO(lblReservationId, tm.getRoomTypeId(), tm.getType(), tm.getKeyMoney())).collect(Collectors.toList()));
-
 
                                 btnRegister.setDisable(false);
 
@@ -162,19 +150,18 @@ public class RegistrationFormController {
                                     if (btnRegister.getText().equalsIgnoreCase("Register")) {
                                         try {
 
-                                            /*//String reservationId = txtReservationId.getText();
-                                            String roomTypeId = txtRoomTypeId.getText();
+                                            String reservationId = lblReservationId.getText();
+                                            /*String roomTypeId = txtRoomTypeId.getText();
                                             String roomType = txtType.getText();
                                             double keyMoney = Double.parseDouble(txtKeyMoney.getText());*/
 
-
-                                            //int qty = !txtKeyMoney.getText().isEmpty() ? search.getQty() - 1 : search.getQty();
+                                            int qty = !txtKeyMoney.getText().isEmpty() ? search.getQty() - 1 : search.getQty();
 
 
                                             double payment = Double.parseDouble((txtPay.getText()));
                                             double remainKeyMoney = keyMoney - payment;
-                                            int qty = !txtKeyMoney.getText().isEmpty() ? search.getQty() - 1 : search.getQty();
-                                            lblRemainKeyMoney.setText(String.valueOf(keyMoney));
+                                            //int qty = !txtKeyMoney.getText().isEmpty() ? search.getQty() - 1 : search.getQty();
+                                            //lblRemainKeyMoney.setText(String.valueOf(keyMoney));
 
                                             String status = (keyMoney != payment) ? remainKeyMoney + "" + " has to be paid" : "Paid";
 
@@ -194,11 +181,12 @@ public class RegistrationFormController {
 
                                             registrationBO.addReservation(new ReservationDTO(reservationId, new StudentDTO(sId, name, address, contact, LocalDate.parse(dob), gender), rooms, status));
 
-                                            initUI();
-
                                             new Alert(Alert.AlertType.CONFIRMATION, "Registration is Successfull.!").show();
+
+                                            initUI();
                                         } catch (Exception e) {
                                             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                                            System.out.println(e);
                                         }
                                     }
                                 });
@@ -232,7 +220,7 @@ public class RegistrationFormController {
         txtKeyMoney.clear();
         txtPay.clear();
 
-        //txtReservationId.setDisable(true);
+        lblReservationId.setDisable(true);
         txtRoomTypeId.setDisable(true);
         txtType.setDisable(true);
         txtKeyMoney.setDisable(true);
@@ -286,5 +274,34 @@ public class RegistrationFormController {
     }
 
     public void newReservationOnAction(ActionEvent actionEvent) {
+        txtSId.clear();
+        studentId = generateNewStudentId();
+        txtSId.setText(studentId);
+        txtName.clear();
+        txtAddress.clear();
+        txtContact.clear();
+        txtDob.setValue(null);
+        rbtnMale.setSelected(false);
+        rbtnFemale.setSelected(false);
+        cmbRoomType.getSelectionModel().clearSelection();
+        txtRoomTypeId.clear();
+        txtType.clear();
+        txtKeyMoney.clear();
+        txtPay.clear();
+
+        //txtReservationId.setDisable(true);
+        txtRoomTypeId.setDisable(true);
+        txtType.setDisable(true);
+        txtKeyMoney.setDisable(true);
+        txtPay.setDisable(true);
+
+        txtRoomTypeId.setEditable(false);
+        txtType.setEditable(false);
+        txtKeyMoney.setEditable(false);
+
+        txtSId.setEditable(false);
+        btnCheckRoomsAvailability.setDisable(true);
+        btnAddReserveRoom.setDisable(true);
+        btnRegister.setDisable(true);
     }
 }

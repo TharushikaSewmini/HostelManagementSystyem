@@ -108,8 +108,6 @@ public class StudentPaymentFormController {
             tblStudentPayment.getSelectionModel().clearSelection();
 
             clearUI();
-            /*tblStudent.getItems().remove(tblStudent.getSelectionModel().getSelectedItem());
-            tblStudent.getSelectionModel().clearSelection();*/
         } catch (Exception e) {
             e.printStackTrace();
         }

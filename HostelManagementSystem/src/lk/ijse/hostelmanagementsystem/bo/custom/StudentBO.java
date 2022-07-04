@@ -8,7 +8,6 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 
 public interface StudentBO extends SuperBO {
-    ArrayList<CustomDTO> getStudentNotPaidKeyMoney() throws Exception;
 
     boolean add(StudentDTO studentDTO) throws Exception;
 
@@ -16,13 +15,9 @@ public interface StudentBO extends SuperBO {
 
     boolean delete(String id) throws Exception;
 
-    StudentDTO getStudent(String id) throws Exception;
-
     ArrayList<StudentDTO> getAllStudents() throws Exception;
 
     String generateNewStudentId() throws Exception;
-
-    StudentDTO searchStudent(String student) throws Exception;
 
     BigInteger getStudentCount() throws Exception;
 }

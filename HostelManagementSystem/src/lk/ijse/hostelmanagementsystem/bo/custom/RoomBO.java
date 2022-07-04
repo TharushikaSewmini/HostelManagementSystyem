@@ -17,12 +17,6 @@ public interface RoomBO extends SuperBO {
 
     ArrayList<RoomDTO> getAllRoomTypes() throws Exception;
 
-
-    boolean roomExist(String id) throws SQLException, ClassNotFoundException;
-
-
-    String generateNewRoomId() throws Exception;
-
     RoomDTO searchRoomType(String type) throws Exception;
 
     BigInteger getRoomCount() throws Exception;

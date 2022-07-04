@@ -41,23 +41,6 @@ public class RoomBoImpl implements RoomBO {
         return roomDAO.delete(id);
     }
 
-    @Override
-    public String generateNewRoomId() throws Exception {
-        String id = roomDAO.generateNewID();
-
-        if (id!=null) {
-            int newCustomerId = Integer.parseInt(id.replace("RM", "")) + 1;
-            return String.format("RM%03d", newCustomerId);
-        } else {
-            return "RM-001";
-        }
-    }
-
-    @Override
-    public boolean roomExist(String id) throws SQLException, ClassNotFoundException {
-        return false;
-    }
-
     public RoomDTO searchRoomType(String type) throws Exception {
         Room room = roomDAO.search(type);
         if (room!=null) {

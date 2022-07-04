@@ -20,6 +20,7 @@ import lk.ijse.hostelmanagementsystem.bo.BOType;
 import lk.ijse.hostelmanagementsystem.bo.custom.RoomBO;
 import lk.ijse.hostelmanagementsystem.bo.custom.StudentBO;
 import lk.ijse.hostelmanagementsystem.dto.StudentDTO;
+import lk.ijse.hostelmanagementsystem.entity.Student;
 import lk.ijse.hostelmanagementsystem.util.Loader;
 import lk.ijse.hostelmanagementsystem.view.tm.StudentTM;
 
@@ -36,7 +37,7 @@ public class DashBoardFormController implements Loader {
     public Label lblRoomCount;
     public Label lblStudentCount;
 
-    public TableView tblStudent;
+    public TableView<StudentTM> tblStudent;
     public TableColumn colStudentId;
     public TableColumn colStudentName;
     public TableColumn colAddress;

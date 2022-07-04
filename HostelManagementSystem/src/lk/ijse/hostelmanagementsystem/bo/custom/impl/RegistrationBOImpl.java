@@ -25,18 +25,6 @@ public class RegistrationBOImpl implements RegistrationBO {
     private final ReservationDAO reservationDAO = DAOFactory.getInstance().getDAO(DAOType.RESERVATION);
 
     @Override
-    public boolean add(StudentDTO studentDTO) throws Exception {
-        return studentDAO.add(new Student(
-                studentDTO.getSId(),
-                studentDTO.getName(),
-                studentDTO.getAddress(),
-                studentDTO.getContact(),
-                studentDTO.getDob(),
-                studentDTO.getGender()
-        ));
-    }
-
-    @Override
     public boolean update(StudentDTO studentDTO) throws Exception {
         return false;
     }
@@ -44,28 +32,6 @@ public class RegistrationBOImpl implements RegistrationBO {
     @Override
     public boolean delete(String id) throws Exception {
         return false;
-    }
-
-    @Override
-    public ArrayList<StudentDTO> getAllRoomTypes() throws Exception {
-        return null;
-    }
-
-    @Override
-    public String generateNewStudentId() throws Exception {
-        String id = studentDAO.generateNewID();
-
-        if (id!=null) {
-            int newStudentId = Integer.parseInt(id.replace("S", "")) + 1;
-            return String.format("S%03d", newStudentId);
-        } else {
-            return "S001";
-        }
-    }
-
-    @Override
-    public RoomDTO searchRoomType(String type) throws Exception {
-        return null;
     }
 
     @Override
