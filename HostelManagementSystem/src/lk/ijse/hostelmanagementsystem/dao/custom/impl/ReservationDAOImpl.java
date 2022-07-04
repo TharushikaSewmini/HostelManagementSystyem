@@ -2,7 +2,6 @@ package lk.ijse.hostelmanagementsystem.dao.custom.impl;
 
 import lk.ijse.hostelmanagementsystem.dao.custom.ReservationDAO;
 import lk.ijse.hostelmanagementsystem.entity.Reservation;
-import lk.ijse.hostelmanagementsystem.entity.Student;
 import lk.ijse.hostelmanagementsystem.util.FactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -78,7 +77,6 @@ public class ReservationDAOImpl implements ReservationDAO {
         Transaction transaction = session.beginTransaction();
 
         try {
-
             Query query = session.createQuery("FROM Reservation");
             List<Reservation> roomList = query.list();
 
@@ -91,19 +89,6 @@ public class ReservationDAOImpl implements ReservationDAO {
         }
         return null;
     }
-
-    /*@Override
-    public boolean exist(String s) throws Exception {
-        Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-
-        Room room = session.get(Room.class, s);
-        //String id = (String) sqlQuery.uniqueResult();
-
-        transaction.commit();
-        session.close();
-        return true;
-    }*/
 
     @Override
     public String generateNewID() throws Exception {
@@ -124,7 +109,6 @@ public class ReservationDAOImpl implements ReservationDAO {
         Transaction transaction = session.beginTransaction();
 
         try {
-
             Query query = session.createQuery("FROM Reservation WHERE resId= : room_type");
             query.setParameter("room_type", type);
             Reservation roomType = (Reservation) query.uniqueResult();
@@ -135,8 +119,27 @@ public class ReservationDAOImpl implements ReservationDAO {
             transaction.rollback();
         }
         return null;
-
     }
 
+    @Override
+    public boolean updateStatus(Reservation entity) throws Exception {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        try {
+            NativeQuery sqlQuery = session.createSQLQuery("UPDATE Reservation SET status= :res_status WHERE resId= :res_id");
+            sqlQuery.setParameter("res_status", entity.getStatus());
+            sqlQuery.setParameter("res_id", entity.getResId());
+
+            if (sqlQuery.executeUpdate() > 0 ) {
+                transaction.commit();
+                session.close();
+                return true;
+            }
+        } catch (Exception exception) {
+            transaction.rollback();
+        }
+        return false;
+    }
 
 }

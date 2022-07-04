@@ -4,39 +4,45 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 
-@Entity
+@Entity(name = "custom")
 public class CustomEntity implements SuperEntity {
     @Id
     private String sId;
     private String name;
-    @Column(columnDefinition = "TEXT")
+    /*@Column(columnDefinition = "TEXT")
     private String address;
     private String contact;
     private LocalDate dob;
     private String gender;
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    private List<Reservation> studentList = new ArrayList<>();
 
     private String roomTypeId;
     private String type;
     private double keyMoney;
     private int qty;
+    @ManyToMany(mappedBy = "room", cascade = CascadeType.ALL)
+    private List<Reservation> roomList = new ArrayList<>();*/
 
     private String resId;
-    private LocalDate date;
+    /*private LocalDate date;
+
+    @ManyToOne
+    private Student student;
+
+    @ManyToMany
+    private List<Room> room;*/
+
     private String status;
 
-    public CustomEntity(String sId, String name, String resId, String status) {
-        this.sId = sId;
-        this.name = name;
-        this.resId = resId;
-        this.status = status;
-    }
+
 }

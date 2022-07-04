@@ -8,6 +8,7 @@ import lk.ijse.hostelmanagementsystem.dto.CustomDTO;
 import lk.ijse.hostelmanagementsystem.dto.StudentDTO;
 import lk.ijse.hostelmanagementsystem.entity.Student;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,5 +91,10 @@ public class StudentBOImpl implements StudentBO {
             return new StudentDTO(s.getSId(), s.getName(), s.getAddress(), s.getContact(), s.getDob(), s.getGender());
         }
         return null;
+    }
+
+    @Override
+    public BigInteger getStudentCount() throws Exception {
+        return studentDAO.getStudentCount();
     }
 }

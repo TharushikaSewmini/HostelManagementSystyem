@@ -8,24 +8,77 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.hostelmanagementsystem.bo.BOFactory;
+import lk.ijse.hostelmanagementsystem.bo.BOType;
+import lk.ijse.hostelmanagementsystem.bo.custom.RoomBO;
+import lk.ijse.hostelmanagementsystem.bo.custom.StudentBO;
+import lk.ijse.hostelmanagementsystem.dto.StudentDTO;
 import lk.ijse.hostelmanagementsystem.util.Loader;
+import lk.ijse.hostelmanagementsystem.view.tm.StudentTM;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class DashBoardFormController implements Loader {
     public Label lblDate;
     public Label lblTime;
     public AnchorPane mainContext;
+    public Label lblRoomCount;
+    public Label lblStudentCount;
+
+    public TableView tblStudent;
+    public TableColumn colStudentId;
+    public TableColumn colStudentName;
+    public TableColumn colAddress;
+    public TableColumn colContact;
+    public TableColumn colDob;
+    public TableColumn colGender;
+
+    // Property Injection(DI)
+    private final RoomBO roomBO = BOFactory.getInstance().getBO(BOType.ROOM);
+    private final StudentBO studentBO = BOFactory.getInstance().getBO(BOType.STUDENT);
 
     public void initialize() {
+        colStudentId.setCellValueFactory(new PropertyValueFactory<>("sId"));
+        colStudentName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colContact.setCellValueFactory(new PropertyValueFactory<>("contact"));
+        colDob.setCellValueFactory(new PropertyValueFactory<>("dob"));
+        colGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
+
+        loadAllStudents();
         loadDateAndTime();
+
+        try {
+            lblRoomCount.setText(String.valueOf(roomBO.getRoomCount()));
+            lblStudentCount.setText(String.valueOf(studentBO.getStudentCount()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadAllStudents() {
+        tblStudent.getItems().clear();
+        /*Get all students*/
+        try {
+            ArrayList<StudentDTO> allStudents = studentBO.getAllStudents();
+
+            for (StudentDTO student : allStudents) {
+                tblStudent.getItems().add(new StudentTM(student.getSId(), student.getName(), student.getAddress(), student.getContact(), student.getDob(), student.getGender()));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void backToHome(MouseEvent mouseEvent) throws IOException {
@@ -44,7 +97,8 @@ public class DashBoardFormController implements Loader {
         loadUi("RoomManagementForm");
     }
 
-    public void homeOnAction(ActionEvent actionEvent) {
+    public void homeOnAction(ActionEvent actionEvent) throws IOException {
+        loadUi("HomePageForm");
     }
 
     public void roomReservationOnAction(ActionEvent actionEvent) throws IOException {

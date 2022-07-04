@@ -1,6 +1,5 @@
 package lk.ijse.hostelmanagementsystem.bo;
 
-import lk.ijse.hostelmanagementsystem.bo.custom.StudentPaymentBO;
 import lk.ijse.hostelmanagementsystem.bo.custom.impl.*;
 
 public class BOFactory {

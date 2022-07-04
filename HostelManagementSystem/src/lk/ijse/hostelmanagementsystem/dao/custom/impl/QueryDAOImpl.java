@@ -15,27 +15,27 @@ public class QueryDAOImpl implements QueryDAO {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-
-        NativeQuery sqlQuery = session.createSQLQuery("SELECT s.sId,s.name, s.address,s.contact,s.dob,s.gender, re.resId, re.status FROM Reservation re INNER JOIN Student s ON re.student = s.sId WHERE re.status NOT LIKE '%Paid%'");
-
-        //SELECT s.sId,s.name, s.address,s.contact,s.dob,s.gender, re.resId, re.status FROM ((Reservation INNER JOIN Room r ON Reservation.room = r.roomTypeId) INNER JOIN Student s ON r.student = s.sId) WHERE re.pay
-
-        /*SELECT SUM(qty) AS qty, OrderDetail.productCode, p.description FROM ((OrderDetail INNER JOIN Product p ON OrderDetail.productCode = p.code) INNER JOIN `Order` o ON OrderDetail.orderId = o.id)
-        WHERE o.date BETWEEN '2022-1-01' AND '2022-3-31'
-        GROUP BY(productCode)
-                ORDER BY productCode ASC*/
-
-
-        //sqlQuery.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
-        //sqlQuery.setParameter(1, code);
-        //List students = sqlQuery.list();
+        NativeQuery sqlQuery = session.createSQLQuery("SELECT s.sId,s.name, re.resId, re.status FROM Student s INNER JOIN Reservation re ON s.sId = re.student_sId WHERE re.status NOT LIKE 'Paid%' ORDER BY s.sId");
         sqlQuery.addEntity(CustomEntity.class);
-        List<CustomEntity> studentList= sqlQuery.getResultList();
+        List<CustomEntity> students = sqlQuery.list();
 
         transaction.commit();
+        session.close();
+        return students;
+    }
 
-        return studentList;
-
-        //return list;
+    @Override
+    public boolean update(CustomEntity entity) throws Exception {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            session.update(entity);
+            transaction.commit();
+            session.close();
+            return true;
+        } catch (Exception exception) {
+            transaction.rollback();
+        }
+        return false;
     }
 }

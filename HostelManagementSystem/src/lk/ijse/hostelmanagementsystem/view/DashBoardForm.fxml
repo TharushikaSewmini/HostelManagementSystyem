@@ -3,6 +3,8 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -22,15 +24,7 @@
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <ImageView id="imgHome" fitHeight="45.0" fitWidth="49.0" layoutX="1278.0" layoutY="5.0" onMouseClicked="#backToHome" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@assests/images/icons8-exterior-96.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-            <ImageView id="imgLogout" fitHeight="45.0" fitWidth="45.0" layoutX="1378.0" layoutY="5.0" onMouseClicked="#logout" pickOnBounds="true">
+            <ImageView id="imgLogout" fitHeight="45.0" fitWidth="45.0" layoutX="1342.0" layoutY="5.0" onMouseClicked="#logout" pickOnBounds="true">
                <image>
                   <Image url="@assests/images/icons8-enter-100.png" />
                </image>
@@ -99,6 +93,43 @@
             </JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="mainContext" layoutX="285.0" layoutY="55.0" prefHeight="939.0" prefWidth="1428.0" />
+      <AnchorPane fx:id="mainContext" layoutX="285.0" layoutY="55.0" prefHeight="939.0" prefWidth="1428.0">
+         <children>
+            <Label alignment="TOP_CENTER" layoutX="846.0" layoutY="78.0" prefHeight="167.0" prefWidth="257.0" style="-fx-background-color: #9c88ff; -fx-background-radius: 10;" text="Students" textFill="WHITE">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_CENTER" layoutX="180.0" layoutY="78.0" prefHeight="167.0" prefWidth="257.0" style="-fx-background-color: #3498db; -fx-background-radius: 10;" text="Room Types" textFill="WHITE">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblRoomCount" alignment="CENTER" layoutX="280.0" layoutY="140.0" text="00" textFill="WHITE">
+               <font>
+                  <Font size="52.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblStudentCount" alignment="CENTER" layoutX="946.0" layoutY="140.0" text="00" textFill="WHITE">
+               <font>
+                  <Font size="52.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tblStudent" layoutX="60.0" layoutY="498.0" prefHeight="376.0" prefWidth="1308.0">
+               <columns>
+                  <TableColumn fx:id="colStudentId" prefWidth="166.0" text="Student Id" />
+                  <TableColumn fx:id="colStudentName" prefWidth="301.0" text="Name" />
+                  <TableColumn fx:id="colAddress" prefWidth="241.0" text="Address" />
+                  <TableColumn fx:id="colContact" prefWidth="222.0" text="Contact" />
+                  <TableColumn fx:id="colDob" prefWidth="201.0" text="Date of Birth" />
+                  <TableColumn fx:id="colGender" prefWidth="176.0" text="Gender" />
+               </columns>
+            </TableView>
+            <Label layoutX="610.0" layoutY="405.0" text="Student Details" textFill="#a13b3b">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
    </children>
 </AnchorPane>

@@ -54,7 +54,6 @@ public class LoginFormController implements Loader {
             if (response instanceof TextField) {
                 TextField textField = (TextField) response;
                 textField.requestFocus();
-
             }
         }
     }
@@ -69,7 +68,6 @@ public class LoginFormController implements Loader {
                     txtVisiblePassword.setVisible(true);
                     imgInvisible.setVisible(true);
                     imgVisible.setVisible(false);
-
                     txtVisiblePassword.setText(pwdPassword.getText());
                     break;
                 case "imgInvisible":
@@ -77,7 +75,6 @@ public class LoginFormController implements Loader {
                     pwdPassword.setVisible(true);
                     imgVisible.setVisible(true);
                     imgInvisible.setVisible(false);
-
                     pwdPassword.setText(txtVisiblePassword.getText());
                     break;
             }
@@ -86,7 +83,7 @@ public class LoginFormController implements Loader {
 
 
     public void loginOnAction(ActionEvent actionEvent) throws IOException {
-        //attempts++;
+
         if(attempts<=3){
             loadUi("DashBoardForm");
         }else{

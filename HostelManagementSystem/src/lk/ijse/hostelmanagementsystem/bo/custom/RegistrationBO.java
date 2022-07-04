@@ -24,4 +24,5 @@ public interface RegistrationBO extends SuperBO {
 
     boolean addReservation(ReservationDTO reservationDTO) throws Exception;
 
+    boolean updateReservationStatus(ReservationDTO reservationDTO) throws Exception;
 }

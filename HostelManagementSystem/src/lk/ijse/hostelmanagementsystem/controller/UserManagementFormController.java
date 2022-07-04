@@ -33,19 +33,14 @@ public class UserManagementFormController {
     public void initialize() {
         initUI();
 
-        try {
-            getUserName(txtUserId.getText());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         Pattern userId = Pattern.compile("[U,0-9]{4}");
+        //Pattern currentUserNamePattern = Pattern.compile("^[A-Z][A-z ]{3,15}$");
         Pattern userNamePattern = Pattern.compile("^[A-Z][A-z ]{3,15}$");
         Pattern passwordPattern = Pattern.compile("^.*[A-z].*[0-9].*[!@#$%^&*()_]$");
         Pattern currentPassword = Pattern.compile("^.*[A-z].*[0-9].*[!@#$%^&*()_]$");
 
         map.put(txtUserId, userId);
-        //map.put(txtCurrentUserName, userNamePattern);
+        //map.put(txtCurrentUserName, currentUserNamePattern);
         map.put(txtNewUserName, userNamePattern);
         map.put(pwdNewPassword, passwordPattern);
         map.put(pwdConfirmPassword, currentPassword);
@@ -61,16 +56,6 @@ public class UserManagementFormController {
         btnSave.setDisable(true);
     }
 
-    private void getUserName(String id) throws Exception {
-        try{
-            id = txtCurrentUserName.getText();
-            String username= userBO.getUserName(id);
-            txtCurrentUserName.setText(username);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public void textFields_Key_Released(KeyEvent keyEvent) {
         ValidationUtil.validate(map,btnSave);
 
@@ -80,26 +65,18 @@ public class UserManagementFormController {
             if (response instanceof TextField) {
                 TextField textField = (TextField) response;
                 textField.requestFocus();
-
             }
         }
     }
 
     public void saveOnAction(ActionEvent actionEvent) {
         String userId = txtUserId.getText();
-        String currentUserName = txtCurrentUserName.getText();
         String newUserName = txtNewUserName.getText();
         String newPassword = pwdNewPassword.getText();
-        String confirmPassword = pwdConfirmPassword.getText();
 
         if (pwdConfirmPassword.getText().equals(pwdNewPassword.getText())) {
             try {
                 //Save Changes
-                /*userBO.add(new UserDTO(userId, newUserName, newPassword));
-                new Alert(Alert.AlertType.CONFIRMATION, "Saved.!").show();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }*/
                 if (userBO.update(new UserDTO(userId, newUserName, newPassword))) {
                 new Alert(Alert.AlertType.CONFIRMATION, userId + "Save Changes.!").show();
             }
@@ -122,4 +99,17 @@ public class UserManagementFormController {
     }
 
 
+    public void userIdOnAction(ActionEvent actionEvent) {
+        getUserName();
+    }
+
+    private void getUserName() {
+        try{
+            String id = txtUserId.getText();
+            String username= userBO.getUserName(id);
+            txtCurrentUserName.setText(username);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

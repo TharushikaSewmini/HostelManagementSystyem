@@ -2,12 +2,15 @@ package lk.ijse.hostelmanagementsystem.dao.custom.impl;
 
 import lk.ijse.hostelmanagementsystem.dao.custom.RoomDAO;
 import lk.ijse.hostelmanagementsystem.entity.Room;
+import lk.ijse.hostelmanagementsystem.entity.Student;
 import lk.ijse.hostelmanagementsystem.util.FactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 
 public class RoomDAOImpl implements RoomDAO {
@@ -56,18 +59,18 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public Room get(String s) throws Exception {
-        /*Session session = FactoryConfiguration.getInstance().getSession();
+    public Room get(String id) throws Exception {
+        Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        Room room = session.get(Room.class, s);
-
-        session.delete(room);
-
-        transaction.commit();
-        session.close();
-        return true;*/
-
+        try {
+            Room room = session.get(Room.class, id);
+            transaction.commit();
+            session.close();
+            return room;
+        } catch (Exception exception) {
+            transaction.rollback();
+        }
         return null;
     }
 
@@ -121,6 +124,18 @@ public class RoomDAOImpl implements RoomDAO {
             transaction.rollback();
         }
         return null;
+    }
 
+    @Override
+    public BigInteger getRoomCount() throws Exception {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        NativeQuery sqlQuery = session.createSQLQuery("SELECT COUNT(roomTypeId) FROM Room");
+        BigInteger id = (BigInteger) sqlQuery.uniqueResult();
+
+        transaction.commit();
+        session.close();
+        return id;
     }
 }

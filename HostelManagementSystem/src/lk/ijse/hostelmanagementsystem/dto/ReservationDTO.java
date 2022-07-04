@@ -17,9 +17,15 @@ public class ReservationDTO {
     private List<RoomDTO> roomList;
     private String status;
 
-    public ReservationDTO(String resId, LocalDate date, String status) {
+    public ReservationDTO(String resId, String status) {
         this.resId = resId;
-        this.date = date;
+        this.status = status;
+    }
+
+    public ReservationDTO(String resId, StudentDTO studentDTO, List<RoomDTO> roomList, String status) {
+        this.resId = resId;
+        this.studentDTO = studentDTO;
+        this.roomList = roomList;
         this.status = status;
     }
 }

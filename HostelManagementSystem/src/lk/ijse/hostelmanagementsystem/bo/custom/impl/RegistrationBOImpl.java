@@ -4,6 +4,7 @@ import lk.ijse.hostelmanagementsystem.bo.custom.RegistrationBO;
 import lk.ijse.hostelmanagementsystem.dao.DAOFactory;
 import lk.ijse.hostelmanagementsystem.dao.DAOType;
 import lk.ijse.hostelmanagementsystem.dao.custom.ReservationDAO;
+import lk.ijse.hostelmanagementsystem.dao.custom.RoomDAO;
 import lk.ijse.hostelmanagementsystem.dao.custom.StudentDAO;
 import lk.ijse.hostelmanagementsystem.dto.ReservationDTO;
 import lk.ijse.hostelmanagementsystem.dto.RoomDTO;
@@ -20,9 +21,8 @@ import java.util.List;
 public class RegistrationBOImpl implements RegistrationBO {
 
     private final StudentDAO studentDAO = DAOFactory.getInstance().getDAO(DAOType.STUDENT);
+    private final RoomDAO roomDAO = DAOFactory.getInstance().getDAO(DAOType.ROOM);
     private final ReservationDAO reservationDAO = DAOFactory.getInstance().getDAO(DAOType.RESERVATION);
-
-    //private final CustomerDAO customerDAO = (CustomerDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.CUSTOMER);
 
     @Override
     public boolean add(StudentDTO studentDTO) throws Exception {
@@ -70,15 +70,14 @@ public class RegistrationBOImpl implements RegistrationBO {
 
     @Override
     public String generateNewReservationId() throws Exception {
-        /*String id = reservationDAO.generateNewID();
+        String id = reservationDAO.generateNewID();
 
         if (id!=null) {
             int newStudentId = Integer.parseInt(id.replace("R", "")) + 1;
             return String.format("R%03d", newStudentId);
         } else {
             return "R001";
-        }*/
-        return null;
+        }
     }
 
     @Override
@@ -96,11 +95,8 @@ public class RegistrationBOImpl implements RegistrationBO {
             }
             if (studentDAO.get(student.getSId()) == null) {
                 return studentDAO.add(student) && reservationDAO.add(new Reservation(reservationDTO.getResId(), reservationDTO.getDate(), student, roomList, reservationDTO.getStatus()));
-//                return studentDAO.save(student) && registerDAO.save(new Registration( dto.getRegDate(), dto.getRegFee(), student, course_list));
-
             }
             return reservationDAO.add(new Reservation(reservationDTO.getResId(), reservationDTO.getDate(), student, roomList, reservationDTO.getStatus()));
-//            return registerDAO.save(new Registration(dto.getRegDate(), dto.getRegFee(), student, course_list));
 
         } catch (Throwable t) {
             session.getTransaction().rollback();
@@ -108,5 +104,14 @@ public class RegistrationBOImpl implements RegistrationBO {
         } finally {
             session.close();
         }
+    }
+
+    @Override
+    public boolean updateReservationStatus(ReservationDTO reservationDTO) throws Exception {
+        return reservationDAO.updateStatus(new Reservation(
+                reservationDTO.getResId(),
+                reservationDTO.getStatus()
+        ));
+
     }
 }

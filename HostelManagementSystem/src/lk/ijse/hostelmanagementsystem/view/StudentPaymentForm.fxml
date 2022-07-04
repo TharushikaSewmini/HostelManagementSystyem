@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="939.0" prefWidth="1428.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostelmanagementsystem.controller.StudentPaymentFormController">
    <children>
@@ -24,5 +25,40 @@
             <TableColumn fx:id="colStatus" prefWidth="362.0" text="Status" />
          </columns>
       </TableView>
+      <JFXTextField fx:id="txtSId" labelFloat="true" layoutX="68.0" layoutY="616.0" prefHeight="42.0" prefWidth="201.0" promptText="Student Id">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtName" labelFloat="true" layoutX="368.0" layoutY="616.0" prefHeight="42.0" prefWidth="346.0" promptText="Name">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtPay" layoutX="288.0" layoutY="760.0" prefHeight="42.0" prefWidth="230.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtReservationId" labelFloat="true" layoutX="831.0" layoutY="616.0" prefHeight="42.0" prefWidth="201.0" promptText="Reserevation Id">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton fx:id="btnSaveStudent" buttonType="RAISED" layoutX="731.0" layoutY="802.0" onAction="#saveStudentOnAction" prefHeight="44.0" prefWidth="201.0" style="-fx-background-color: #16a085; -fx-background-radius: 6;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXTextField fx:id="txtStatus" labelFloat="true" layoutX="1112.0" layoutY="616.0" prefHeight="42.0" prefWidth="230.0" promptText="Status">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXTextField>
+      <Label layoutX="231.0" layoutY="768.0" text="Pay :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

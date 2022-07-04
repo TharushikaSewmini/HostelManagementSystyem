@@ -17,6 +17,7 @@ import java.util.List;
 public class Student implements SuperEntity {
     @Id
     private String sId;
+    @Column(nullable = false)
     private String name;
     @Column(columnDefinition = "TEXT")
     private String address;

@@ -1,9 +1,6 @@
 package lk.ijse.hostelmanagementsystem.util;
 
-import lk.ijse.hostelmanagementsystem.entity.Reservation;
-import lk.ijse.hostelmanagementsystem.entity.Room;
-import lk.ijse.hostelmanagementsystem.entity.Student;
-import lk.ijse.hostelmanagementsystem.entity.User;
+import lk.ijse.hostelmanagementsystem.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -28,7 +25,8 @@ public class FactoryConfiguration {
                 .addAnnotatedClass(Room.class)
                 .addAnnotatedClass(Student.class)
                 .addAnnotatedClass(Reservation.class)
-                .addAnnotatedClass(User.class).getMetadataBuilder().build();
+                .addAnnotatedClass(User.class)
+                .addAnnotatedClass(CustomEntity.class).getMetadataBuilder().build();
 
         sessionFactory =meta.getSessionFactoryBuilder().build();
 

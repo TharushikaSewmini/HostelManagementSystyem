@@ -30,8 +30,7 @@ public class UserBOImpl implements UserBO {
 
      @Override
      public String getUserName(String id) throws Exception {
-        String userName = userDAO.getUserName(id);
-        return userName;
+         return userDAO.getUserName(id);
      }
 
     @Override

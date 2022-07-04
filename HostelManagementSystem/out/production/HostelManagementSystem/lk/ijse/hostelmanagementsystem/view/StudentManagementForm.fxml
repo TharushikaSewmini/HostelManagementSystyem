@@ -14,9 +14,9 @@
 
 <AnchorPane prefHeight="939.0" prefWidth="1428.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hostelmanagementsystem.controller.StudentManagementFormController">
    <children>
-      <Label layoutX="135.0" layoutY="37.0" text="Manage Students" textFill="#673a79">
+      <Label layoutX="570.0" layoutY="34.0" text="Manage Students" textFill="#673a79">
          <font>
-            <Font name="System Bold" size="31.0" />
+            <Font name="Cambria Bold" size="42.0" />
          </font>
       </Label>
       <Separator layoutX="43.0" layoutY="93.0" prefHeight="3.0" prefWidth="1297.0" />
@@ -30,7 +30,7 @@
             <TableColumn fx:id="colGender" prefWidth="176.0" text="Gender" />
          </columns>
       </TableView>
-      <JFXButton fx:id="btnSaveStudent" buttonType="RAISED" layoutX="208.0" layoutY="426.0" onAction="#saveStudentOnAction" prefHeight="44.0" prefWidth="232.0" style="-fx-background-color: #16a085; -fx-background-radius: 6;" text="Save" textFill="WHITE">
+      <JFXButton fx:id="btnSaveStudent" buttonType="RAISED" layoutX="249.0" layoutY="426.0" onAction="#saveStudentOnAction" prefHeight="44.0" prefWidth="232.0" style="-fx-background-color: #16a085; -fx-background-radius: 6;" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -71,7 +71,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXRadioButton fx:id="rbtnMale" layoutX="1047.0" layoutY="316.0" onAction="#setGenderOnAction" selected="true" text="Male">
+      <JFXRadioButton fx:id="rbtnMale" layoutX="1047.0" layoutY="316.0" selected="true" text="Male">
          <font>
             <Font size="17.0" />
          </font>
@@ -79,7 +79,7 @@
             <ToggleGroup fx:id="studentGender" />
          </toggleGroup>
       </JFXRadioButton>
-      <JFXRadioButton fx:id="rbtnFemale" layoutX="1155.0" layoutY="316.0" onAction="#setGenderOnAction" text="Female" toggleGroup="$studentGender">
+      <JFXRadioButton fx:id="rbtnFemale" layoutX="1155.0" layoutY="316.0" text="Female" toggleGroup="$studentGender">
          <font>
             <Font size="17.0" />
          </font>

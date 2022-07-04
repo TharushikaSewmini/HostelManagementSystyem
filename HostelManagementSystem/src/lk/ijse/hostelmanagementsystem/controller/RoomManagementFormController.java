@@ -57,7 +57,6 @@ public class RoomManagementFormController {
                 txtQty.setDisable(false);
             }
         });
-
         txtQty.setOnAction(event -> btnSaveRoom.fire());
         loadAllRooms();
     }
@@ -88,39 +87,11 @@ public class RoomManagementFormController {
         btnDeleteRoom.setDisable(true);
     }
 
-    /*private String getRoomTypeId() {
-        if (rbtnRoomTypeId1.isSelected()) {
-            return "RM-1324";
-        } else if (rbtnRoomTypeId2.isSelected()) {
-            return "RM-5467";
-        } else if (rbtnRoomTypeId3.isSelected()) {
-            return "RM-7896";
-        } else if (rbtnRoomTypeId4.isSelected()) {
-            return "RM-0093";
-        }
-        return null;
-
-    }*/
-
-    /*private String getType() {
-        if (rbtnRoomTypeId1.isSelected()) {
-            return "Non-AC";
-        } else if (rbtnRoomTypeId2.isSelected()) {
-            return "Non-AC/Food";
-        } else if (rbtnRoomTypeId3.isSelected()) {
-            return "AC";
-        } else if (rbtnRoomTypeId4.isSelected()) {
-            return "AC/Food";
-        }
-        return null;
-
-    }*/
-
     public void saveRoomOnAction(ActionEvent actionEvent) {
         String roomTypeId = txtRoomTypeId.getText();
         String type = txtType.getText();
 
-        if (!type.matches("[A-Za-z0-9 ]+")) {
+        if (!type.matches("[A-Za-z0-9-/ ]+")) {
             new Alert(Alert.AlertType.ERROR, "Invalid type").show();
             txtType.requestFocus();
             return;
@@ -143,7 +114,6 @@ public class RoomManagementFormController {
                 if (roomBO.add(new RoomDTO(roomTypeId, type, keyMoney, qty))) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Saved.!").show();
                 }
-
                 tblRoom.getItems().add(new RoomTM(roomTypeId, type, keyMoney, qty));
             } catch (Exception e) {
                 e.printStackTrace();
@@ -151,7 +121,6 @@ public class RoomManagementFormController {
         } else {
             try {
                 /*Update Room*/
-
                 if (roomBO.update(new RoomDTO(roomTypeId, type, keyMoney, qty))) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Updated.!").show();
                 }
@@ -175,11 +144,9 @@ public class RoomManagementFormController {
             if (roomBO.delete(roomTypeId)) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Deleted.! " + roomTypeId).show();
             }
-
             tblRoom.getItems().remove(tblRoom.getSelectionModel().getSelectedItem());
             tblRoom.getSelectionModel().clearSelection();
             initUI();
-
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Failed to delete the room " + roomTypeId).show();
         }
@@ -199,31 +166,5 @@ public class RoomManagementFormController {
         btnSaveRoom.setText("Save");
         tblRoom.getSelectionModel().clearSelection();
     }
-
-    /*public void roomTypeSetOnAction(ActionEvent actionEvent) {
-        txtType.setText(getType());
-
-    }*/
-
-    /*private String generateNewId() {
-        try {
-            return roomBOImpl.generateNewRoomId();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "R001";
-
-        /*String s = null;
-        try {
-            s = roomBOImpl.generateNewRoomId();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return s;
-    }
-
-    private boolean existRoom(String roomTypeTd) throws SQLException, ClassNotFoundException {
-        //return roomBO.roomExist(roomTypeTd);
-    }*/
 
 }

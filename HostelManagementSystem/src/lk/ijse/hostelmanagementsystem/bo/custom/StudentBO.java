@@ -4,6 +4,7 @@ import lk.ijse.hostelmanagementsystem.bo.SuperBO;
 import lk.ijse.hostelmanagementsystem.dto.CustomDTO;
 import lk.ijse.hostelmanagementsystem.dto.StudentDTO;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 
 public interface StudentBO extends SuperBO {
@@ -22,4 +23,6 @@ public interface StudentBO extends SuperBO {
     String generateNewStudentId() throws Exception;
 
     StudentDTO searchStudent(String student) throws Exception;
+
+    BigInteger getStudentCount() throws Exception;
 }

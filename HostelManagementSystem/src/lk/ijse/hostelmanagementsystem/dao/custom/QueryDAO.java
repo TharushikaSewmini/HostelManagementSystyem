@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface QueryDAO extends SuperDAO {
     List<CustomEntity> getStudentNotPaidKeyMoney() throws Exception;
+
+    boolean update(CustomEntity entity) throws Exception;
 }

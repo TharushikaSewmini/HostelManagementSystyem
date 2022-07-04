@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 
+import java.math.BigInteger;
 import java.util.List;
 
 public class StudentDAOImpl implements StudentDAO {
@@ -77,7 +78,6 @@ public class StudentDAOImpl implements StudentDAO {
         Transaction transaction = session.beginTransaction();
 
         try {
-
             Query query = session.createQuery("FROM Student");
             List<Student> studentList = query.list();
 
@@ -110,7 +110,6 @@ public class StudentDAOImpl implements StudentDAO {
         Transaction transaction = session.beginTransaction();
 
         try {
-
             Query query = session.createQuery("FROM Student WHERE sId= : student_Id");
             query.setParameter("student_Id", id);
             Student student1 = (Student) query.uniqueResult();
@@ -121,5 +120,18 @@ public class StudentDAOImpl implements StudentDAO {
             transaction.rollback();
         }
         return null;
+    }
+
+    @Override
+    public BigInteger getStudentCount() throws Exception {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        NativeQuery sqlQuery = session.createSQLQuery("SELECT COUNT(sId) FROM Student");
+        BigInteger id = (BigInteger) sqlQuery.uniqueResult();
+
+        transaction.commit();
+        session.close();
+        return id;
     }
 }

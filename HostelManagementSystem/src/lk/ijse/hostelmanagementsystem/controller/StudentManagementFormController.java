@@ -71,7 +71,6 @@ public class StudentManagementFormController {
         });
         rbtnFemale.setOnAction(event -> btnSaveStudent.fire());
         loadAllStudents();
-
     }
 
     private void loadAllStudents() {
@@ -98,6 +97,14 @@ public class StudentManagementFormController {
         txtDob.setValue(null);
         rbtnMale.setSelected(false);
         rbtnFemale.setSelected(false);
+
+        txtSId.setDisable(true);
+        txtName.setDisable(true);
+        txtAddress.setDisable(true);
+        txtContact.setDisable(true);
+        txtDob.setDisable(true);
+        rbtnMale.setDisable(true);
+        rbtnFemale.setDisable(true);
         btnSaveStudent.setDisable(true);
         btnDeleteStudent.setDisable(true);
     }
@@ -146,7 +153,6 @@ public class StudentManagementFormController {
                 if (studentBO.add(new StudentDTO(studentId, name, address, contact, LocalDate.parse(dob), gender))) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Saved.!").show();
                 }
-
                 tblStudent.getItems().add(new StudentTM(studentId, name, address, contact, LocalDate.parse(dob), gender));
             } catch (Exception e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -157,7 +163,6 @@ public class StudentManagementFormController {
                 if (studentBO.update(new StudentDTO(studentId, name, address, contact, LocalDate.parse(dob), gender))) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Updated.!").show();
                 }
-
                 StudentTM selectedStudent = tblStudent.getSelectionModel().getSelectedItem();
                 selectedStudent.setSId(studentId);
                 selectedStudent.setName(name);
@@ -202,17 +207,12 @@ public class StudentManagementFormController {
             if (studentBO.delete(studentId)) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Deleted.! " + studentId).show();
             }
-
             tblStudent.getItems().remove(tblStudent.getSelectionModel().getSelectedItem());
             tblStudent.getSelectionModel().clearSelection();
             initUI();
-
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Failed to delete the student " + studentId).show();
         }
-    }
-
-    public void setGenderOnAction(ActionEvent actionEvent) {
     }
 
     public String generateNewStudentId() {
